@@ -7,8 +7,8 @@
       <button> 
         <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  />
       </button>
-      <button> <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  /> </button>
-      <button> <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  /> </button>
+      <button> <img src="../assets/panther-logo.png" alt="buttonpng" border="0" height="50px"  /> </button>
+      <button> <img src="../assets/rhino-logo.png" alt="buttonpng" border="0" height="50px"  /> </button>
     </b-navbar>
   </bdi>
 </template>
@@ -35,5 +35,13 @@ export default {
 .user-icon {
   height: 4.4vw;
   float: left;
+}
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 }
 </style>
