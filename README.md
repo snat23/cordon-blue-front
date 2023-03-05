@@ -1,4 +1,4 @@
-# cordon-blue-front
+# client
 
 ## Project setup
 ```
