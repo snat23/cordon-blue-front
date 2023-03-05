@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <filter-component />
+   <!-- <Navbar />
+   <NewEventComponent /> -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FilterComponent from "./components/FilterComponent.vue";
+import NewEventComponent from './components/NewEventComponent.vue';
+import Navbar from './components/Navbar.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    FilterComponent,
+    NewEventComponent,
+    Navbar,
+  },
+};
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Heebo");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Heebo";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
