@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <nav-bar />
-    <router-view />
+    <NewEventComponent />
+    <!-- <nav-bar />
+    <router-view /> -->
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/Navbar.vue";
+import NewEventComponent from './components/NewEventComponent.vue';
 
 export default {
   name: "App",
   components: {
-    NavBar,
+    NewEventComponent,
   },
 };
 </script>
@@ -25,12 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-body {
-  /* background-image: url("assets/background.jpg"); */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
 </style>
