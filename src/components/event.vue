@@ -24,7 +24,7 @@
     name: "event",
     props :{
         event : Object,
-    },
+    }, 
   };
   </script>
   
