@@ -10,10 +10,10 @@
   "dependencies": {
     "alertifyjs": "^1.13.1",
     "axios": "^0.19.2",
-    "bootstrap-vue": "^2.21.2",
+    "bootstrap-vue": "^2.23.1",
     "core-js": "^3.21.1",
     "deep-extend": "^0.5.1",
-    "vue": "^2.6.14",
+    "vue": "^2.7.14",
     "vue-alertify": "^1.1.0",
     "vue-bootstrap-datetimepicker": "^5.0.1",
     "vue-router": "^3.5.3",
@@ -23,14 +23,10 @@
   "devDependencies": {
     "@babel/polyfill": "^7.12.1",
     "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-router": "^4.5.15",
     "@vue/cli-plugin-vuex": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
-    "babel-eslint": "^10.1.0",
-    "bootstrap": "^4.6.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "bootstrap": "^4.6.2",
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.16.0",
     "portal-vue": "^2.1.6",
@@ -38,20 +34,6 @@
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-bootstrap-vue": "^0.6.0",
     "vue-template-compiler": "^2.6.14"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
