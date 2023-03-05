@@ -13,7 +13,7 @@
         </div>
          
         <div id="demo" class="collapse">
-           מידע נוסף
+            <p>{{ event.extraInfo }} :מידע נוסף </p>
         </div>       
     </div>
   </template>
