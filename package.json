@@ -23,14 +23,17 @@
   "devDependencies": {
     "@babel/polyfill": "^7.12.1",
     "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-plugin-router": "^4.5.15",
     "@vue/cli-plugin-vuex": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
+<<<<<<< HEAD
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.6.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+=======
+    "bootstrap": "^4.6.2",
+>>>>>>> 43ce3d9ec3c49f819ab9de87c3d1f9c3960954d5
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.16.0",
     "portal-vue": "^2.1.6",
@@ -38,20 +41,6 @@
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-bootstrap-vue": "^0.6.0",
     "vue-template-compiler": "^2.6.14"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

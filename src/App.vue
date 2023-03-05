@@ -1,18 +1,22 @@
 <template>
   <div id="app">
     <filter-component />
-    <!-- <nav-bar />
-    <router-view /> -->
+   <Navbar />
+   <NewEventComponent />
   </div>
 </template>
 
 <script>
 import FilterComponent from "./components/FilterComponent.vue";
+import NewEventComponent from './components/NewEventComponent.vue';
+import Navbar from './components/Navbar.vue';
 
 export default {
   name: "App",
   components: {
     FilterComponent,
+    NewEventComponent,
+    Navbar,
   },
 };
 </script>
@@ -26,12 +30,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-body {
-  /* background-image: url("assets/background.jpg"); */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
 </style>
