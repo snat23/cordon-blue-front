@@ -9,9 +9,8 @@
 import NavBar from "./components/Navbar.vue";
 import Sidebar from "./components/FloatingSidebar.vue"
 
-
 export default {
-  name: "App",
+  name: 'App',
   components: {
     NavBar,
     Sidebar
@@ -20,13 +19,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Heebo");
-
 #app {
-  font-family: "Heebo";
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
