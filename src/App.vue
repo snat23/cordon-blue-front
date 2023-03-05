@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <NewEventComponent />
-    <!-- <nav-bar />
-    <router-view /> -->
+    
+   <Navbar />
+   <NewEventComponent />
   </div>
 </template>
 
 <script>
 import NewEventComponent from './components/NewEventComponent.vue';
+import Navbar from './components/Navbar.vue';
 
 export default {
   name: "App",
   components: {
     NewEventComponent,
+    Navbar,
   },
 };
 </script>
