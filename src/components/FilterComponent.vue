@@ -23,7 +23,10 @@
     <hr />
     <label>סוג אירוע</label>
     <b-input-group>
-      <b-form-select v-model="selectedEvent" :options="options"></b-form-select>
+      <b-form-select
+        v-model="selectedEvent"
+        :options="eventsOptions"
+      ></b-form-select>
     </b-input-group>
 
     <label>מיקום:</label>
@@ -35,6 +38,16 @@
         required
       ></b-form-input>
     </b-input-group>
+    <label>אמל''ח</label>
+    <b-input-group>
+      <b-form-select
+        v-model="selectedWeapon"
+        :options="weaponsOptions"
+      ></b-form-select>
+    </b-input-group>
+    <b-button type="submit" @onClick="getFilteredArray" variant="primary"
+      >סנן</b-button
+    >
   </div>
 </template>
 
@@ -47,15 +60,19 @@ export default {
       formatted: "",
       selected: "",
       selectedEvent: null,
-      options: ["a", "b", "c"],
+      selectedWeapon: null,
+      eventsOptions: ["a", "b", "c"],
+      weaponsOptions: ["d", "e", "f"],
+      events: [],
     };
   },
   methods: {
     onContext(ctx) {
-      // The date formatted in the locale, or the `label-no-date-selected` string
       this.formatted = ctx.selectedFormatted;
-      // The following will be an empty string until a valid date is entered
       this.selected = ctx.selectedYMD;
+    },
+    getFilteredArray() {
+      return this.events;
     },
   },
 };

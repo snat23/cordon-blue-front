@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <filter-component />
-   <Navbar />
-   <NewEventComponent />
+   <!-- <Navbar />
+   <NewEventComponent /> -->
   </div>
 </template>
 
