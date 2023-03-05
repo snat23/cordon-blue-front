@@ -34,13 +34,13 @@
                 <p>אירועי עבר</p>
             </div>
         </div>
-        <div v-if="show === 'lastEvents'">
+        <div v-if="show === 'lastEvents'" class="mt-3">
             <empty-component/>
         </div>
-        <div v-else-if="show === 'addNewEvent'">
-            <example-component/>
+        <div v-else-if="show === 'addNewEvent'" class="mt-3">
+            <new-event-component/>
         </div>
-        <div v-else-if="show === 'pastEvents'">
+        <div v-else-if="show === 'pastEvents'" class="mt-3">
             <example-component/>
         </div>
     </div>
@@ -49,6 +49,7 @@
 <script>
 import ExampleComponent from "./ExampleAddEvent.vue";
 import EmptyComponent from "./Empty.vue";
+import NewEventComponent from './NewEventComponent.vue';
 
 export default {
     data() {
@@ -58,7 +59,8 @@ export default {
     },
     components: {
         ExampleComponent,
-        EmptyComponent
+        EmptyComponent,
+        NewEventComponent
     },
     methods: {
         openComponent(componentName) {
