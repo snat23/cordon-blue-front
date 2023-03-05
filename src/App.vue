@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <nav-bar />
-    <router-view />
+    <filter-component />
+    <!-- <nav-bar />
+    <router-view /> -->
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/Navbar.vue";
+import FilterComponent from "./components/FilterComponent.vue";
 
 export default {
   name: "App",
   components: {
-    NavBar,
+    FilterComponent,
   },
 };
 </script>
