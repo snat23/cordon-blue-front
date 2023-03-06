@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import api from "../api.js"
 export default {
   data() {
     return {
@@ -71,7 +72,14 @@ export default {
       this.formatted = ctx.selectedFormatted;
       this.selected = ctx.selectedYMD;
     },
-    getFilteredArray() {
+    async getFilteredArray() {
+      
+      const conditions = {time: this.value, coordinates: this.place, eventType: this.selectedEvent, weapon: this.selectedWeapon, sector: this.selectedSector};
+      this.events = await api.getFilteredArray(conditions).data;
+
+alert(JSON.stringify(this.events));
+
+
       return this.events;
     },
   },
