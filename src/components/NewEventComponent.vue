@@ -17,6 +17,14 @@
             required
           ></b-form-timepicker>
         </b-form-group>
+
+        <b-form-group id="input-group-10" label="מיקום" label-for="input-10">
+          <b-form-input
+            id="input-10"
+            v-model="form.location"
+            required
+          ></b-form-input>
+        </b-form-group>
   
         <b-form-group id="input-group-2" label="סוג אירוע" label-for="input-2">
           <b-form-select
@@ -36,7 +44,20 @@
             ></b-form-select>
           </b-form-group>
 
-          <b-button v-show="!this.showAddInjury" variant="primary" @click="showAddInjuries">הוספת פצועים</b-button>
+         
+    
+          <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
+            <b-form-select
+              id="input-4"
+              v-model="form.weapon"
+              :options="weaponTypes"
+              required
+            ></b-form-select>
+
+            <b-button v-show="!this.showAddInjury" variant="primary" @click="showAddInjuries">הוספת פצועים</b-button>
+          </b-form-group>
+  
+          
 
           <section v-show="this.showAddInjury">
             <b-form-group id="input-group-7" label="פצועים קל" label-for="input-7">
@@ -86,16 +107,6 @@
               </b-row>
             </b-container>
           </section>
-    
-          <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
-            <b-form-select
-              id="input-4"
-              v-model="form.weapon"
-              :options="weaponTypes"
-              required
-            ></b-form-select>
-          </b-form-group>
-  
         <b-button type="submit" variant="primary">פרסם</b-button>
         <b-button type="reset" variant="danger">אפס</b-button>
       </b-form>
