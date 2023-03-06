@@ -45,7 +45,7 @@
         :options="weaponsOptions"
       ></b-form-select>
     </b-input-group>
-    <b-button type="submit" @onClick="getFilteredArray" variant="primary"
+    <b-button type="submit" @onClick="getFilteredArray" variant="primary" class="but"
       >סנן</b-button
     >
   </div>
@@ -77,3 +77,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.but {
+  margin: 5px
+}
+</style>
