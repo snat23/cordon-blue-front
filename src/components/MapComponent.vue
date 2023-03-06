@@ -1,6 +1,6 @@
 <template>
   <l-map
-    style="height: 400px"
+    style="height: 750px"
     :zoom="zoom"
     :center="center"
     @click="getLocation"
