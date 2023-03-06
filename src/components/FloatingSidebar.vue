@@ -139,6 +139,9 @@ export default {
         FilterComponent,
         MapComponent,
     },
+    props: {
+        lastEventsList : Array
+    },
     methods: {
         openComponent(componentName) {
             this.show = componentName;

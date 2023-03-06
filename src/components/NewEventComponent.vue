@@ -153,7 +153,7 @@ export default {
       injuredId: 0,
     };
   },
-  methods: {
+    methods: {
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));
