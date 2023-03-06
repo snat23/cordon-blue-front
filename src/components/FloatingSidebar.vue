@@ -96,14 +96,18 @@
         <p>אירועי עבר</p>
       </div>
     </div>
-    <div v-if="show === 'lastEvents'" class="mt-3">
+    <div v-if="show === 'lastEvents'" class="col-3 mt-3">
       <empty-component />
     </div>
-    <div v-else-if="show === 'addNewEvent'" class="mt-3">
+    <div v-else-if="show === 'addNewEvent'" class="col-3 mt-3">
       <new-event-component />
     </div>
-    <div v-else-if="show === 'pastEvents'" class="mt-3">
+    <div v-else-if="show === 'pastEvents'" class="col-3 mt-3">
       <filter-component />
+    </div>
+    <div v-else class="col-3 mt-3"></div>
+    <div class="col-5 mt-3">
+      <map-component />
     </div>
   </div>
 </template>
@@ -112,7 +116,8 @@
 import ExampleComponent from "./ExampleAddEvent.vue";
 import EmptyComponent from "./Empty.vue";
 import NewEventComponent from "./NewEventComponent.vue";
-import filterComponent from "./FilterComponent.vue"
+import FilterComponent from "./FilterComponent.vue"
+import MapComponent from "./MapComponent.vue";
 
 export default {
   data() {
@@ -124,7 +129,8 @@ export default {
     ExampleComponent,
     EmptyComponent,
     NewEventComponent,
-    filterComponent,
+    FilterComponent,
+    MapComponent,
   },
   methods: {
     openComponent(componentName) {
