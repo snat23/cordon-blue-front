@@ -2,12 +2,14 @@
   <div id="app">
     <Navbar />
     <Sidebar />
+    <!-- <Map /> -->
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue"
 import Sidebar from "./components/FloatingSidebar.vue";
+import Map from "./components/MapComponent.vue"
 
 
 export default {
@@ -15,6 +17,7 @@ export default {
   components: {
     Navbar,
     Sidebar,
+    Map,
   },
 };
 </script>
