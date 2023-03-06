@@ -1,6 +1,6 @@
 <template>
     <div class="row justify-content-start">
-        <div class="col-3">
+        <div id="sideBar" class="col-3">
             <div class="btn-center mt-4">
                 <svg @click="openComponent('lastEvents')" fill="#000000" type="button" width="100px" height="100px" viewBox="0 0 846.66 846.66" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Layer_x0020_1">
@@ -34,8 +34,8 @@
                 <p>אירועי עבר</p>
             </div>
         </div>
-        <div v-if="show === 'lastEvents'" class="mt-3">
-            <empty-component/>
+        <div v-if="show === 'lastEvents'" class="mt-3" id="lastEventsCom">
+            <last-events :lastEvents="events"/>
         </div>
         <div v-else-if="show === 'addNewEvent'" class="mt-3">
             <new-event-component/>
@@ -51,16 +51,25 @@ import ExampleComponent from "./ExampleAddEvent.vue";
 import EmptyComponent from "./Empty.vue";
 import NewEventComponent from './NewEventComponent.vue';
 
+import LastEvents from './LastEvents.vue';
+
 export default {
     data() {
         return {
-            show: null
+            show: null,
+            events: [{id: 1, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 2, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 3, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 4, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 5, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},]
+
         }
     },
     components: {
         ExampleComponent,
         EmptyComponent,
-        NewEventComponent
+        NewEventComponent,
+        LastEvents,
     },
     methods: {
         openComponent(componentName) {
@@ -73,5 +82,13 @@ export default {
 <style scoped>
 .side-button {
     font-size: 80px;
+}
+
+#lastEventsCom {
+    width: 450px;
+    margin-left: -100px;
+}
+#sideBar {
+    margin-left: -50px;
 }
 </style>
