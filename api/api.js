@@ -14,6 +14,7 @@ export default {
   eventTypes() {
     return {
       getEventTypes: async () => await axios.get('/eventTypes'),
+      getEventTypeId: async (id) => await axios.get(`/eventTypes/${id}`),
     };
   },
   weapons() {

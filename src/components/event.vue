@@ -2,11 +2,11 @@
   <div id="eventComponent" class="container">
     <div class="row">
       <p>{{ event.coordinates }} :מיקום</p>
-      <p>{{ event.date }} :תאריך</p>
+      <p>{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
     </div>
     <div class="row">
-      <p>{{ event.eventType }} :סוג אירוע</p>
-      <p>{{ event.time }} :שעה</p>
+      <p dir="rtl">סוג אירוע: {{ nameById }}</p>
+      <p>{{ new Date(event.time).toLocaleTimeString() }} :שעה</p>
     </div>
 
     <div class="text-left">
@@ -26,14 +26,23 @@
 </template>
 <script>
 import collapse from 'bootstrap/js/src/collapse';
+import api from '../../api/api.js';
 
 export default {
   name: 'event',
   props: {
     event: Object,
   },
-  created() {
-    console.log(this.event);
+  data() {
+    return {
+      nameById: '',
+    };
+  },
+  async created() {
+    console.log(this.event.eventType);
+    const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
+      .data;
+    this.nameById = data.name;
   },
 };
 </script>
