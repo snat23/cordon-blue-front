@@ -1,21 +1,19 @@
 <template>
   <div id="app">
     <filter-component />
-   <!-- <Navbar />
-   <NewEventComponent /> -->
+    <Navbar />
   </div>
 </template>
 
 <script>
 import FilterComponent from "./components/FilterComponent.vue";
-import NewEventComponent from './components/NewEventComponent.vue';
-import Navbar from './components/Navbar.vue';
+import NewEventComponent from "./components/NewEventComponent.vue";
+import Navbar from "./components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
     FilterComponent,
-    NewEventComponent,
     Navbar,
   },
 };
