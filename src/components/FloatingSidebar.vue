@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-start">
-    <div class="col-3">
+    <div id="sideBar" class="col-3">
       <div class="btn-center mt-4">
         <svg
           @click="openComponent('lastEvents')"
@@ -96,8 +96,8 @@
         <p>אירועי עבר</p>
       </div>
     </div>
-    <div v-if="show === 'lastEvents'" class="col-3 mt-3">
-      <empty-component />
+    <div v-if="show === 'lastEvents'" class="col-3 mt-3" id="lastEventsCom">
+      <last-events :lastEvents="events"/>
     </div>
     <div v-else-if="show === 'addNewEvent'" class="col-3 mt-3">
       <new-event-component />
@@ -118,30 +118,46 @@ import EmptyComponent from "./Empty.vue";
 import NewEventComponent from "./NewEventComponent.vue";
 import FilterComponent from "./FilterComponent.vue"
 import MapComponent from "./MapComponent.vue";
+import LastEvents from './LastEvents.vue';
 
 export default {
-  data() {
-    return {
-      show: null,
-    };
-  },
-  components: {
-    ExampleComponent,
-    EmptyComponent,
-    NewEventComponent,
-    FilterComponent,
-    MapComponent,
-  },
-  methods: {
-    openComponent(componentName) {
-      this.show = componentName;
+    data() {
+        return {
+            show: null,
+            events: [{id: 1, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 2, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 3, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 4, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
+            {id: 5, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},]
+        }
     },
-  },
-};
+    components: {
+        ExampleComponent,
+        EmptyComponent,
+        NewEventComponent,
+        LastEvents,
+        filterComponent,
+        MapComponent,
+    },
+    methods: {
+        openComponent(componentName) {
+            this.show = componentName;
+        }
+    },
+}
 </script>
 
 <style scoped>
 .side-button {
   font-size: 80px;
 }
+
+#lastEventsCom {
+    width: 450px;
+    margin-left: -100px;
+}
+#sideBar {
+    margin-left: -50px;
+}
 </style>
+
