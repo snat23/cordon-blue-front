@@ -42,21 +42,24 @@
             <b-form-group id="input-group-7" label="פצועים קל" label-for="input-7">
               <b-form-input
                 id="input-7"
-                v-model="form.Injuries[0][1]"
+                type="number"
+                v-model.number="form.Injuries[0][1]"
                 required
               ></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-8" label="פצועים בינוני" label-for="input-8">
               <b-form-input
                 id="input-8"
-                v-model="form.Injuries[1][1]"
+                v-model.number="form.Injuries[1][1]"
+                type="number"
                 required
               ></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-9" label="פצועים קשה" label-for="input-9">
               <b-form-input
                 id="input-9"
-                v-model="form.Injuries[2][1]"
+                type="number"
+                v-model.number="form.Injuries[2][1]"
                 required
               ></b-form-input>
             </b-form-group>
@@ -67,17 +70,17 @@
 
             <b-container class="injured-info-container">
               <b-row class="justify-content-md-center">
-                <b-button variant="outline-dark" disabled > פצועים קל 
+                <b-button variant="outline-dark" disabled > פצועים קל:
                   {{this.form.Injuries[0][1]}} 
                 </b-button>
               </b-row>
               <b-row class="justify-content-md-center">
-                <b-button variant="warning" disabled> פצועים בינוני 
+                <b-button variant="warning" disabled> פצועים בינוני:
                   {{this.form.Injuries[1][1]}}
                  </b-button>
               </b-row>
               <b-row class="justify-content-md-center">
-                <b-button variant="danger" disabled> פצועים קשה 
+                <b-button variant="danger" disabled> פצועים קשה:
                   {{this.form.Injuries[2][1]}}
                  </b-button>
               </b-row>
@@ -124,10 +127,17 @@
       },
       onReset(event) {
         event.preventDefault()
-        this.form.title = ''
+        this.form.alertName = ''
         this.form.eventType = null
         this.form.location = ''
         this.form.weaponType = null
+        this.form.sector = null
+        this.form.time = null
+        this.form.Injuries =  [
+          [1,0],
+          [2,0],
+          [3,0],
+        ]
       },
       showAddInjuries() {
         this.showAddInjury =!this.showAddInjury
@@ -141,3 +151,10 @@
     },
   }
   </script>
+
+  <style scoped>
+  .b-row{
+    width: 100%;
+    margin-top: 5px;
+  }
+</style>
