@@ -25,7 +25,7 @@
         <b-form-group id="input-group-10" label="מיקום" label-for="input-10">
           <b-form-input
             id="input-10"
-            v-model="form.location"
+            v-model="this.selectedLocation"
             required
           ></b-form-input>
         </b-form-group>
@@ -60,7 +60,8 @@
             v-show="!this.showAddInjury"
             variant="primary"
             @click="showAddInjuries"
-            class="but">הוספת פצועים</b-button
+            class="but"
+            >הוספת פצועים</b-button
           >
         </b-form-group>
 
@@ -128,7 +129,13 @@
             </b-row>
           </b-container>
         </section>
-        <b-button type="submit" variant="primary" class="but">פרסם</b-button>
+        <b-button
+          @click="this.clearSelectedLocation"
+          type="submit"
+          variant="primary"
+          class="but"
+          >פרסם</b-button
+        >
         <b-button type="reset" variant="danger" class="but">אפס</b-button>
       </b-form>
     </ul>
@@ -136,6 +143,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -153,7 +162,8 @@ export default {
       injuredId: 0,
     };
   },
-    methods: {
+  methods: {
+    ...mapActions(["clearSelectedLocation"]),
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));
@@ -177,6 +187,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(["selectedLocation"]),
     noInjuries() {
       console.log(this.form.Injuries[0][1]);
       return (
@@ -204,6 +215,6 @@ export default {
 }
 
 .but {
-  margin: 5px
+  margin: 5px;
 }
 </style>
