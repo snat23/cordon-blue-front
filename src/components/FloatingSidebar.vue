@@ -96,7 +96,7 @@
         <p>אירועי עבר</p>
       </div>
     </div>
-    <div v-if="show === 'lastEvents'" class="col-3 mt-3" id="lastEventsCom">
+    <div v-if="show === 'lastEvents'" class="col-4 mt-3" id="lastEventsCom">
       <last-events :lastEvents="events"/>
     </div>
     <div v-else-if="show === 'addNewEvent'" class="col-3 mt-3">
@@ -136,7 +136,7 @@ export default {
         EmptyComponent,
         NewEventComponent,
         LastEvents,
-        filterComponent,
+        FilterComponent,
         MapComponent,
     },
     methods: {
