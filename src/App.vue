@@ -9,12 +9,14 @@
 import Navbar from "./components/Navbar.vue"
 import Sidebar from "./components/FloatingSidebar.vue";
 import api from '../api/api.js';
+import Map from "./components/MapComponent.vue"
 
 export default {
   name: "App",
   components: {
     Navbar,
     Sidebar,
+    Map,
   },
   data() {
     return {

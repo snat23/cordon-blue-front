@@ -26,7 +26,7 @@ import event from './event.vue';
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         margin-bottom: 10px;
-        max-height: 800px;
+        max-height: 400px;
         max-width: 600px;
     }
     
