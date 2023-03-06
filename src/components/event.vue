@@ -8,19 +8,19 @@
         </div>
         
         <div class="text-left">
-          <i id="extraInfoButton" href="#demo" class="fa fa-chevron-down" data-toggle="collapse">
+            <i id="extraInfoButton" v-bind:href="'#event' + (event.id)" class="fa fa-chevron-down" data-toggle="collapse">
         </i>   
         </div>
-         
-        <div id="demo" class="collapse">
+            
+        <div v-bind:id="'event' + (event.id)" class="collapse">
             <p>{{ event.extraInfo }} :מידע נוסף </p>
         </div>       
     </div>
-  </template>
-  <script>
-  import collapse from "bootstrap/js/src/collapse";
+</template>
+<script>
+import collapse from "bootstrap/js/src/collapse";
 
-  export default {
+export default {
     name: "event",
     props :{
         event : Object,
