@@ -41,15 +41,16 @@
             <new-event-component/>
         </div>
         <div v-else-if="show === 'pastEvents'" class="mt-3">
-            <example-component/>
+            <filter-component />
         </div>
-    </div>
+  </div>
 </template>
 
 <script>
 import ExampleComponent from "./ExampleAddEvent.vue";
 import EmptyComponent from "./Empty.vue";
-import NewEventComponent from './NewEventComponent.vue';
+import NewEventComponent from "./NewEventComponent.vue";
+import filterComponent from "./FilterComponent.vue"
 
 import LastEvents from './LastEvents.vue';
 
@@ -70,6 +71,7 @@ export default {
         EmptyComponent,
         NewEventComponent,
         LastEvents,
+        filterComponent,
     },
     methods: {
         openComponent(componentName) {
@@ -81,7 +83,7 @@ export default {
 
 <style scoped>
 .side-button {
-    font-size: 80px;
+  font-size: 80px;
 }
 
 #lastEventsCom {
@@ -92,3 +94,4 @@ export default {
     margin-left: -50px;
 }
 </style>
+
