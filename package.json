@@ -8,8 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "alertifyjs": "^1.13.1",
     "axios": "^0.19.2",
+    "bootstrap-icons": "^1.10.3",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.21.1",
     "deep-extend": "^0.5.1",

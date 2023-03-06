@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <filter-component />
-    <Navbar />
+
+    <nav-bar />
+    <sidebar />
   </div>
 </template>
 
 <script>
-import FilterComponent from "./components/FilterComponent.vue";
-import NewEventComponent from "./components/NewEventComponent.vue";
 import Navbar from "./components/Navbar.vue";
+import Sidebar from "./components/FloatingSidebar.vue"
+
 
 export default {
   name: "App",
   components: {
-    FilterComponent,
     Navbar,
+    Sidebar
   },
 };
 </script>
