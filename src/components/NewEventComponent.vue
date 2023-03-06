@@ -36,18 +36,52 @@
             ></b-form-select>
           </b-form-group>
 
-          <b-button v-show="!this.showAddInjury" variant="danger" @click="showAddInjuries">הוספת פצועים</b-button>
+          <b-button v-show="!this.showAddInjury" variant="primary" @click="showAddInjuries">הוספת פצועים</b-button>
 
           <section v-show="this.showAddInjury">
-            <b-form-group id="input-group-6" label="רמת פציעה" label-for="input-6">
-              <b-form-select
-                id="input-6"
-                v-model="form.weapon"
-                :options="injuryTypes"
+            <b-form-group id="input-group-7" label="פצועים קל" label-for="input-7">
+              <b-form-input
+                id="input-7"
+                v-model="form.Injuries[0][1]"
                 required
-              ></b-form-select>
-              <b-button variant="danger" @click="showAddInjuries">הוספת פצוע</b-button>
+              ></b-form-input>
             </b-form-group>
+            <b-form-group id="input-group-8" label="פצועים בינוני" label-for="input-8">
+              <b-form-input
+                id="input-8"
+                v-model="form.Injuries[1][1]"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group id="input-group-9" label="פצועים קשה" label-for="input-9">
+              <b-form-input
+                id="input-9"
+                v-model="form.Injuries[2][1]"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-button variant="primary" @click="showAddInjuries">הוספת פצוע</b-button>
+          </section>
+
+          <section v-if="!noInjuries && !this.showAddInjury">
+
+            <b-container class="injured-info-container">
+              <b-row class="justify-content-md-center">
+                <b-button variant="outline-dark" disabled > פצועים קל 
+                  {{this.form.Injuries[0][1]}} 
+                </b-button>
+              </b-row>
+              <b-row class="justify-content-md-center">
+                <b-button variant="warning" disabled> פצועים בינוני 
+                  {{this.form.Injuries[1][1]}}
+                 </b-button>
+              </b-row>
+              <b-row class="justify-content-md-center">
+                <b-button variant="danger" disabled> פצועים קשה 
+                  {{this.form.Injuries[2][1]}}
+                 </b-button>
+              </b-row>
+            </b-container>
           </section>
     
           <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
@@ -70,10 +104,13 @@
     data() {
       return {
         form: {
-          Injuries: [],
+          Injuries :  [
+            [1,0],
+            [2,0],
+            [3,0],
+          ]
         },
         eventTypes: ['a', 'b', 'c', 'd'],
-        injuryTypes: ['אנוש', 'בינוני', 'קל', 'קשה'],
         weaponTypes: ['e', 'f', 'g', 'h'],
         showAddInjury: false,
         show: true,
@@ -95,6 +132,12 @@
       showAddInjuries() {
         this.showAddInjury =!this.showAddInjury
       },
-    }
+    },
+    computed: {
+      noInjuries() {
+        console.log(this.form.Injuries[0][1]);
+        return (this.form.Injuries[0][1] === 0) && (this.form.Injuries[1][1] === 0) && (this.form.Injuries[2][1] === 0);   
+      }
+    },
   }
   </script>
