@@ -43,6 +43,8 @@
   </template>
 
 <script>
+import api from '../../api/api.js';
+
   export default {
     data() {
       return {
@@ -59,6 +61,12 @@
         show: true
       }
     },
+    async created() {
+    this.eventTypes = await (await api.eventTypes().getEventTypes()).data;
+    this.weaponTypes = await (await api.weapons().getWeaponsTypes()).data;
+
+    console.log(this.eventTypes);
+  },
     methods: {
       onSubmit(event) {
         event.preventDefault()

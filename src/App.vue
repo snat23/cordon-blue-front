@@ -22,8 +22,7 @@ export default {
     }
   },
   async created() {   
-    const eventsFromServer = await (await api.events().getEvents()).data;
-    this.events = eventsFromServer;  
+    this.events = await (await api.events().getEvents()).data;  
     console.log(this.events);
   },
 };
