@@ -11,8 +11,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import { latLng } from "leaflet";
-
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import dangerIcon from "../assets/danger.png"
 export default {
@@ -38,9 +38,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["changeSelectedLocation"]),
     getLocation(event) {
-    console.log([event.latlng.lat, event.latlng.lng])
-    return [event.latlng.lat, event.latlng.lng];
+    const location = [event.latlng.lat, event.latlng.lng]
+    this.changeSelectedLocation(location);
   }
   }
 };
