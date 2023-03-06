@@ -5,9 +5,17 @@
         <b-form-group id="input-group-1" label="כותרת אירוע" label-for="input-1">
           <b-form-input
             id="input-1"
-            v-model="form.title"
+            v-model="form.alertName"
             required
           ></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-5" label="שעה" label-for="input-5">
+          <b-form-timepicker
+            id="input-5"
+            v-model="form.time"
+            required
+          ></b-form-timepicker>
         </b-form-group>
   
         <b-form-group id="input-group-2" label="סוג אירוע" label-for="input-2">
@@ -19,18 +27,19 @@
           ></b-form-select>
         </b-form-group>
 
-        <b-form-group id="input-group-3" label="מיקום" label-for="input-3">
-            <b-form-input
+        <b-form-group id="input-group-3" label="חטמ'ר" label-for="input-3">
+            <b-form-select
               id="input-3"
-              v-model="form.location"
+              v-model="form.sector"
+              :options="eventTypes"
               required
-            ></b-form-input>
+            ></b-form-select>
           </b-form-group>
     
           <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
             <b-form-select
               id="input-4"
-              v-model="form.weaponType"
+              v-model="form.weapon"
               :options="weaponTypes"
               required
             ></b-form-select>
@@ -47,11 +56,7 @@
     data() {
       return {
         form: {
-          title: '',
-          eventType: null,
-          location: '',
-          weaponType: null,
-          checked: []
+          injured: [],
         },
         eventTypes: ['a', 'b', 'c', 'd'],
         
@@ -70,7 +75,6 @@
         this.form.eventType = null
         this.form.location = ''
         this.form.weaponType = null
-        this.form.checked = []
       }
     }
   }</script>
