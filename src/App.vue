@@ -1,20 +1,30 @@
 <template>
   <div id="app">
     <Navbar />
-    <Sidebar />
+    <Sidebar :lastEventsList="events"/>
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue"
 import Sidebar from "./components/FloatingSidebar.vue";
-
+import api from '../api/api.js';
 
 export default {
   name: "App",
   components: {
     Navbar,
     Sidebar,
+  },
+  data() {
+    return {
+      events: [],
+    }
+  },
+  async created() {   
+    const eventsFromServer = await (await api.events().getEvents()).data;
+    this.events = eventsFromServer;  
+    console.log(this.events);
   },
 };
 </script>

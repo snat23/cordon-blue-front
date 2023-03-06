@@ -10,7 +10,6 @@
 
 <script>
 import event from './event.vue';
-
     export default {
         components: {
             event, 
@@ -18,7 +17,7 @@ import event from './event.vue';
         name: "LastEvents",
         props :{
             lastEvents: Array,
-        },
+        }
     };
 </script>
 

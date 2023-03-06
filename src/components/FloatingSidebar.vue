@@ -35,7 +35,7 @@
             </div>
         </div>
         <div v-if="show === 'lastEvents'" class="mt-3" id="lastEventsCom">
-            <last-events :lastEvents="events"/>
+            <last-events :lastEvents="lastEventsList"/>
         </div>
         <div v-else-if="show === 'addNewEvent'" class="mt-3">
             <new-event-component/>
@@ -72,6 +72,9 @@ export default {
         NewEventComponent,
         LastEvents,
         filterComponent,
+    },
+    props: {
+        lastEventsList : Array
     },
     methods: {
         openComponent(componentName) {
