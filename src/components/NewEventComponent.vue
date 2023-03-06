@@ -60,7 +60,8 @@
             v-show="!this.showAddInjury"
             variant="primary"
             @click="showAddInjuries"
-            class="but">הוספת פצועים</b-button
+            class="but"
+            >הוספת פצועים</b-button
           >
         </b-form-group>
 
@@ -128,7 +129,13 @@
             </b-row>
           </b-container>
         </section>
-        <b-button @click="this.clearSelectedLocation" type="submit" variant="primary" class="but">פרסם</b-button>
+        <b-button
+          @click="this.clearSelectedLocation"
+          type="submit"
+          variant="primary"
+          class="but"
+          >פרסם</b-button
+        >
         <b-button type="reset" variant="danger" class="but">אפס</b-button>
       </b-form>
     </ul>
@@ -208,6 +215,6 @@ export default {
 }
 
 .but {
-  margin: 5px
+  margin: 5px;
 }
 </style>

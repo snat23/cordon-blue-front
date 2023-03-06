@@ -9,8 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_SELECTED_LOCATION(state, location) {
-      state.selectedLocation = [];
-      state.selectedLocation.push(location);
+      state.selectedLocation = location;
     },
     CLEAR_SELECTED_LOCATION(state) {
       state.selectedLocation = [];
@@ -18,7 +17,7 @@ export default new Vuex.Store({
   },
   actions: {
     changeSelectedLocation({ commit }, location) {
-      console.log(location)
+      console.log(location);
       commit("ADD_SELECTED_LOCATION", location);
     },
     clearSelectedLocation({ commit }) {
