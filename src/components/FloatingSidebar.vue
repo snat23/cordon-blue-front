@@ -113,8 +113,6 @@
 </template>
 
 <script>
-import ExampleComponent from "./ExampleAddEvent.vue";
-import EmptyComponent from "./Empty.vue";
 import NewEventComponent from "./NewEventComponent.vue";
 import FilterComponent from "./FilterComponent.vue"
 import MapComponent from "./MapComponent.vue";
@@ -132,8 +130,6 @@ export default {
         }
     },
     components: {
-        ExampleComponent,
-        EmptyComponent,
         NewEventComponent,
         LastEvents,
         FilterComponent,
