@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="list-group">
+    <ul class="list-group-add-event">
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group
           id="input-group-1"
@@ -217,12 +217,14 @@ export default {
   margin-top: 5px;
 }
 
-.list-group {
+.list-group-add-event {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
   max-height: 700px;
   max-width: 600px;
+  height: 700px;
+  background-color: white;
 }
 
 .but {

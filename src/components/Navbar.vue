@@ -43,7 +43,7 @@ button {
 }
 
 .navbar {
-  background-color: #3cb5e0;
+  background-color: #1775b4;
 }
 
 button:hover{
