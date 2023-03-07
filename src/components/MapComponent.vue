@@ -10,22 +10,32 @@
       v-for="(event, index) in events"
       :key="index"
       :lat-lng="event"
-      :icon="icon"
+      :icon="eventIcon"
     ></l-marker>
+
+    <l-circle
+      v-if="isCurrent"
+      :lat-lng="this.selectedLocation"
+      :radius="circle.radius"
+      :color="circle.color"
+    />
   </l-map>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 import { latLng } from "leaflet";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LCircle } from "vue2-leaflet";
 import dangerIcon from "../assets/danger.png";
+import currentIcon from "../assets/asterisk.png";
+
 export default {
   name: "main-map",
   components: {
     LMap,
     LTileLayer,
     LMarker,
+    LCircle,
   },
   data() {
     return {
@@ -39,19 +49,34 @@ export default {
         [32.1203, 35.1402],
         [32.1223, 35.1202],
       ],
-      icon: L.icon({
+      eventIcon: L.icon({
         iconUrl: dangerIcon,
         iconSize: [22, 22],
         iconAnchor: [16, 37],
       }),
+      currentIcon: L.icon({
+        iconUrl: currentIcon,
+        iconSize: [22, 22],
+        iconAnchor: [16, 37],
+      }),
+      isCurrent: false,
+      circle: {},
     };
   },
   methods: {
     ...mapActions(["changeSelectedLocation"]),
     getLocation(event) {
-      const location = [event.latlng.lat, event.latlng.lng];
-      this.changeSelectedLocation(location);
+      this.circle = {
+        center: [event.latlng.lat, event.latlng.lng],
+        radius: 400,
+        color: "red",
+      };
+      this.isCurrent = true;
+      this.changeSelectedLocation([event.latlng.lat, event.latlng.lng]);
     },
+  },
+  computed: {
+    ...mapState(["selectedLocation"]),
   },
 };
 </script>
