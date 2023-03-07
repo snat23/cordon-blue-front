@@ -17,7 +17,6 @@ export default new Vuex.Store({
   },
   actions: {
     changeSelectedLocation({ commit }, location) {
-      console.log(location);
       commit("ADD_SELECTED_LOCATION", location);
     },
     clearSelectedLocation({ commit }) {

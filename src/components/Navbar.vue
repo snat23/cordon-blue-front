@@ -1,7 +1,7 @@
 <template>
   <bdi>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <img src="../assets/user-icon.png" class="user-icon" 
+    <b-navbar toggleable="lg"  type="dark" >
+      <img src="../assets/user-icon.png" class="user-icon mr-2" 
       />
       
       <a href="https://www.youtube.com/watch?v=COfkdOu9KiI">
@@ -19,7 +19,7 @@
         <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  />
       </button>
       
-      <h1 class="title">Cordon Bleu</h1>
+      <h1 class="title text-center mt-3">Cordon Bleu</h1>
     </b-navbar>
   </bdi>
 </template>
@@ -42,8 +42,12 @@ button {
   outline: none;
 }
 
+.navbar {
+  background-color: #1775b4;
+}
+
 button:hover{
-  background-color: lightblue;
+  background-color: black;
   opacity: 20%;
   border-radius: 30%;
 }
@@ -59,5 +63,7 @@ button:hover{
   left: 50%;
   margin-left: -50px !important;
   display: block;
+  font-family: 'Heebo';
+  font-size: 25px;
 }
 </style>

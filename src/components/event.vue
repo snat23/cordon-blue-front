@@ -39,7 +39,6 @@ export default {
     };
   },
   async created() {
-    console.log(this.event.eventType);
     const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
       .data;
     this.nameById = data.name;
@@ -54,6 +53,7 @@ export default {
   margin: 2vh;
   max-width: 70vh;
   max-height: 30vh;
+  background-color: aliceblue;
 }
 .row {
   justify-content: space-around;

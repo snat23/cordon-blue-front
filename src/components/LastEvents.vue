@@ -29,6 +29,10 @@ import event from './event.vue';
         max-height: 700px;
         max-width: 600px;
     }
-    
+    li{
+        margin-bottom: 10px;
+        background-color: transparent;
+        border-color: transparent;
+    }
 </style>
   
