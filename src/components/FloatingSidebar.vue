@@ -6,8 +6,8 @@
           @click="openComponent('lastEvents')"
           fill="#000000"
           type="button"
-          width="100px"
-          height="100px"
+          width="65px"
+          height="65px"
           viewBox="0 0 846.66 846.66"
           style="
             shape-rendering: geometricPrecision;
