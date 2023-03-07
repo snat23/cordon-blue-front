@@ -1,7 +1,7 @@
 <template>
-  <bdi>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <img src="../assets/user-icon.png" class="user-icon" 
+  <bdi >
+    <b-navbar class="navbar">
+      <img src="../assets/user-icon.png" class="user-icon mr-2" 
       />
       
       <a href="https://www.youtube.com/watch?v=COfkdOu9KiI">
@@ -11,7 +11,7 @@
       
       <a href="https://www.youtube.com/watch?v=TYklMREHD-s">
           <button>
-            <img src="../assets/rhino-logo.png" alt="buttonpng" border="0" height="50px"  />
+            <img class="rounded" src="../assets/rhino-logo.png" alt="buttonpng" border="0" height="40px"  />
            </button>
       </a>
 
@@ -19,7 +19,7 @@
         <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  />
       </button>
       
-      <h1 class="title">Cordon Bleu</h1>
+      <h1 class="title text-center mt-3">Cordon Bleu</h1>
     </b-navbar>
   </bdi>
 </template>
@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+
+.navbar {
+  background-color: #3cb5e0;
+} 
 
 button {
   background-color: transparent;
@@ -59,5 +63,7 @@ button:hover{
   left: 50%;
   margin-left: -50px !important;
   display: block;
+  font-family: 'Heebo';
+  font-size: 25px;
 }
 </style>
