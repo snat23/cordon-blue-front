@@ -15,7 +15,7 @@
 
     <l-circle
       v-if="isCurrent"
-      :lat-lng="circle.center"
+      :lat-lng="this.selectedLocation"
       :radius="circle.radius"
       :color="circle.color"
     />
