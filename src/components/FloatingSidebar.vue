@@ -106,7 +106,7 @@
       <filter-component />
     </div>
     <div v-else class="col-3 mt-3"></div>
-    <div class="col-5 mt-3">
+    <div class="col-6 mt-3">
       <map-component />
     </div>
   </div>
@@ -138,6 +138,9 @@ export default {
         LastEvents,
         FilterComponent,
         MapComponent,
+    },
+    props: {
+        lastEventsList : Array
     },
     methods: {
         openComponent(componentName) {

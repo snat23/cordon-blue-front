@@ -10,7 +10,6 @@
 
 <script>
 import event from './event.vue';
-
     export default {
         components: {
             event, 
@@ -18,7 +17,7 @@ import event from './event.vue';
         name: "LastEvents",
         props :{
             lastEvents: Array,
-        },
+        }
     };
 </script>
 
@@ -27,7 +26,7 @@ import event from './event.vue';
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         margin-bottom: 10px;
-        max-height: 800px;
+        max-height: 700px;
         max-width: 600px;
     }
     
