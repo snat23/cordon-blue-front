@@ -1,5 +1,5 @@
 <template>
-  <div id="eventComponent" class="container">
+  <div v-bind:id="'eventComponent' + event._id" class="container" v-bind:style="[event.isOpen ? {'border' : '2px solid #f00c0c'} : {'border' : '2px solid #000000'}]">
     <div class="row">
       <p>{{ event.coordinates }} :מיקום</p>
       <p>{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
@@ -47,17 +47,18 @@ export default {
   },
   methods: {
     async closeEvent(id) {
-      this.$emit("closeEvent");
       console.log(this.event.isOpen);
       await api.events().closeEvent(id);
       console.log(this.event.isOpen);
+      console.log(`eventComponent${id}`);
+      document.getElementById(`eventComponent${id}`).style.border  = '2px solid #000000';
     },
   },
 };
 </script>
 
 <style scoped>
-#eventComponent {
+.container {
   border-radius: 25px;
   border: 2px solid #000000;
   margin: 2vh;

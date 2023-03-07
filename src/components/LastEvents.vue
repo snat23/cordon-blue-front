@@ -6,7 +6,7 @@
         :key="currEvent.id"
         class="list-group-item"
       >
-        <event :v-if="isEventVisible" @closeEvent="closeEvent" :event="currEvent" />
+        <event :event="currEvent" />
       </li>
     </ul>
   </div>
@@ -21,16 +21,6 @@ export default {
   name: "LastEvents",
   props: {
     lastEvents: Array,
-  },
-  data() {
-    return {
-      isEventVisible: true,
-    };
-  },
-  methods: {
-    closeEvent() {
-      this.isEventVisible = false;
-    },
   },
 };
 </script>
