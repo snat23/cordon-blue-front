@@ -130,7 +130,6 @@
           </b-container>
         </section>
         <b-button
-          @click="this.clearSelectedLocation"
           type="submit"
           variant="primary"
           class="but"
@@ -150,11 +149,18 @@ export default {
   data() {
     return {
       form: {
+        id: null,
+        eventType: null,
+        time: null,
+        weapon: null,
+        sector: null,
+        alertName: null,
         Injuries: [
           [1, 0],
           [2, 0],
           [3, 0],
         ],
+        coordinates: null
       },
       eventTypes: [],
       sectors: [],
@@ -165,9 +171,9 @@ export default {
     };
   },
     async created() {
-    this.eventTypes = await (await api.eventTypes().getEventTypes()).data;
-    this.sectors = await (await api.sectors().getRegionalBrigade()).data;
-    this.weaponTypes = await (await api.weapons().getWeaponsTypes()).data;
+    this.eventTypes = (await api.eventTypes().getEventTypes()).data;
+    this.sectors = (await api.sectors().getRegionalBrigade()).data;
+    this.weaponTypes = (await api.weapons().getWeaponsTypes()).data;
 
     this.eventTypes = this.eventTypes.map((event) => event.name);
     this.sectors = this.sectors.map((sector) => sector.name);
@@ -175,15 +181,18 @@ export default {
   },
   methods: {
     ...mapActions(["clearSelectedLocation"]),
-    onSubmit(event) {
+    async onSubmit(event) {
       event.preventDefault();
+      this.form.coordinates = this.selectedLocation;
+      await api.events().addEvent(this.form);
       alert(JSON.stringify(this.form));
+      this.clearSelectedLocation;
     },
     onReset(event) {
       event.preventDefault();
+      this.clearSelectedLocation();
       this.form.alertName = "";
       this.form.eventType = null;
-      this.form.location = "";
       this.form.weaponType = null;
       this.form.sector = null;
       this.form.time = null;
@@ -200,7 +209,6 @@ export default {
   computed: {
     ...mapState(["selectedLocation"]),
     noInjuries() {
-      console.log(this.form.Injuries[0][1]);
       return (
         this.form.Injuries[0][1] === 0 &&
         this.form.Injuries[1][1] === 0 &&
