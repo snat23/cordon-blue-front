@@ -22,27 +22,36 @@
     <div v-bind:id="'event' + event.id" class="collapse">
       <p>{{ event.alertName }} :מידע נוסף</p>
     </div>
+    <b-button @click="closeEvent(event._id)" variant="secondary">סגור</b-button>
   </div>
 </template>
 <script>
-import collapse from 'bootstrap/js/src/collapse';
-import api from '../../api/api.js';
+import collapse from "bootstrap/js/src/collapse";
+import api from "../../api/api.js";
 
 export default {
-  name: 'event',
+  name: "event",
   props: {
     event: Object,
   },
   data() {
     return {
-      nameById: '',
+      nameById: "",
     };
   },
   async created() {
-    console.log(this.event.eventType);
+    //console.log(this.event.eventType);
     const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
       .data;
     this.nameById = data.name;
+  },
+  methods: {
+    async closeEvent(id) {
+      this.$emit("closeEvent");
+      console.log(this.event.isOpen);
+      await api.events().closeEvent(id);
+      console.log(this.event.isOpen);
+    },
   },
 };
 </script>
