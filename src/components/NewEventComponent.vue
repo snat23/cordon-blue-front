@@ -155,42 +155,44 @@
               required
             ></b-form-textarea>
           </b-form-group>
-          <b-button
-            v-show="this.showAddDesc"
-            variant="primary"
-            @click="showAddDescription"
-            class="but"
-            >הוספת תיאור
-          </b-button>
         </section>
 
-        <b-button
-          v-show="!this.showAddTerrorists"
-          variant="primary"
-          @click="showAddTerror"
-          class="but"
-          >הוספת מפגעים
-        </b-button>
-
-        <section v-show="this.showAddTerrorists">
-          <b-form-group
-            id="input-group-12"
-            label="כמות מפגעים"
-            label-for="input-12"
-          >
-            <b-form-input
-              id="input-12"
-              type="number"
-              v-model.number="form.terrorists"
-              required
-            ></b-form-input>
-          </b-form-group>
+        <section>
           <b-button
-            v-show="this.showAddTerrorists"
+            v-show="!this.showAddTerrorists"
             variant="primary"
             @click="showAddTerror"
             class="but"
-            >הוספת מפגע
+            >הוספת מפגעים
+          </b-button>
+
+          <section v-show="this.showAddTerrorists">
+            <b-form-group
+              id="input-group-12"
+              label="כמות מפגעים"
+              label-for="input-12"
+            >
+              <b-form-input
+                id="input-12"
+                type="number"
+                v-model.number="form.terrorists"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-button
+              v-show="this.showAddTerrorists"
+              variant="primary"
+              @click="showAddTerror"
+              class="but"
+              >הוספת מפגע
+            </b-button>
+          </section>
+        </section>
+
+        <section v-if="this.form.terrorists !== 0 && !this.showAddTerrorists">
+          <b-button variant="outline-danger" disabled>
+            כמות מפגעים:
+            {{ this.form.terrorists }}
           </b-button>
         </section>
 
@@ -222,7 +224,7 @@ export default {
         ],
         coordinates: null,
         description: null,
-        terrorists: null,
+        terrorists: 0,
       },
       eventTypes: [],
       sectors: [],
@@ -271,7 +273,7 @@ export default {
     },
 
     showAddDescription() {
-      this.showAddDesc = !this.showAddDesc;
+      this.showAddDesc = true;
     },
 
     showAddTerror() {
