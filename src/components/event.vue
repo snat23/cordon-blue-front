@@ -1,5 +1,13 @@
 <template>
-  <div id="eventComponent" class="container">
+  <div
+    v-bind:id="'eventComponent' + event._id"
+    class="container"
+    v-bind:style="[
+      event.isOpen
+        ? { border: '2px solid #f00c0c' }
+        : { border: '2px solid #000000' },
+    ]"
+  >
     <div class="row">
       <h5>{{ event.alertName }}</h5>
     </div>
@@ -66,6 +74,7 @@
         </b-row>
       </b-container>
     </div>
+    <b-button @click="closeEvent(event._id)" variant="secondary">סגור</b-button>
   </div>
 </template>
 <script>
@@ -87,12 +96,23 @@ export default {
       .data;
     this.eventTypeById = data.name;
   },
+
   computed: {},
+  methods: {
+    async closeEvent(id) {
+      console.log(this.event.isOpen);
+      await api.events().closeEvent(id);
+      console.log(this.event.isOpen);
+      console.log(`eventComponent${id}`);
+      document.getElementById(`eventComponent${id}`).style.border =
+        "2px solid #000000";
+    },
+  },
 };
 </script>
 
 <style scoped>
-#eventComponent {
+.container {
   border-radius: 25px;
   border: 2px solid #000000;
   margin: 2vh;

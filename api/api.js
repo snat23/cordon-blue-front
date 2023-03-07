@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { async } from 'regenerator-runtime';
-axios.defaults.baseURL = 'http://localhost:3000';
+import axios from "axios";
+import { async } from "regenerator-runtime";
+axios.defaults.baseURL = "http://localhost:3000";
 
 export default {
   events() {
@@ -8,6 +8,9 @@ export default {
       getEvents: async () => await axios.get("/events"),
       addEvent: async (event) => {
         await axios.post("/events/add", (event));
+      },
+      closeEvent: async (id) => {
+        await axios.patch(`/events/${id}`);
       },
     };
   },
