@@ -14,14 +14,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-5" label="שעה" label-for="input-5">
-          <b-form-timepicker
-            id="input-5"
-            v-model="form.time"
-            required
-          ></b-form-timepicker>
-        </b-form-group>
-
         <b-form-group
           v-show="this.selectedLocation.length"
           id="input-group-10"
@@ -213,7 +205,7 @@ export default {
       form: {
         id: null,
         eventType: null,
-        time: null,
+        time: Date.now(),
         weapon: null,
         sector: null,
         alertName: null,
