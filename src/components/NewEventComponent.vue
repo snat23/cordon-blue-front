@@ -39,7 +39,7 @@
         <b-form-group id="input-group-3" label="חטמ'ר" label-for="input-3">
           <b-form-select
             id="input-3"
-            v-model="form.sector"
+            v-model="form.sector.id"
             :options="sectors"
             required
           ></b-form-select>
@@ -48,7 +48,7 @@
         <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
           <b-form-select
             id="input-4"
-            v-model="form.weapon"
+            v-model="form.weapon.weaponId"
             :options="weaponTypes"
             required
           ></b-form-select>
