@@ -43,7 +43,7 @@
           <b-form-select
             id="input-3"
             v-model="form.sector"
-            :options="eventTypes"
+            :options="sectors"
             required
           ></b-form-select>
         </b-form-group>
@@ -144,6 +144,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import api from '../../api/api.js';
 
 export default {
   data() {
@@ -155,12 +156,20 @@ export default {
           [3, 0],
         ],
       },
-      eventTypes: ["a", "b", "c", "d"],
-      weaponTypes: ["e", "f", "g", "h"],
+      eventTypes: [],
+      sectors: [],
+      weaponTypes: [],
       showAddInjury: false,
       show: true,
       injuredId: 0,
     };
+  },
+    async created() {
+    this.eventTypes = await (await api.eventTypes().getEventTypes()).data;
+    this.weaponTypes = await (await api.weapons().getWeaponsTypes()).data;
+
+    this.eventTypes = this.eventTypes.map((event) => event.name);
+    this.weaponTypes = this.weaponTypes.map((weapon) => weapon.weaponName);
   },
   methods: {
     ...mapActions(["clearSelectedLocation"]),
