@@ -210,10 +210,9 @@ export default {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
-  max-height: 400px;
+  max-height: 700px;
   max-width: 600px;
 }
-
 .but {
   margin: 5px;
 }
