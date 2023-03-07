@@ -25,7 +25,7 @@
     <b-input-group>
       <b-form-select
         v-model="selectedEvent"
-        :options="eventsOptions"
+        :options="eventTypes"
       ></b-form-select>
     </b-input-group>
 
@@ -42,7 +42,7 @@
     <b-input-group>
       <b-form-select
         v-model="selectedWeapon"
-        :options="weaponsOptions"
+        :options="weaponTypes"
       ></b-form-select>
     </b-input-group>
     <b-button
@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import api from "../../api/api.js";
+
 export default {
   data() {
     return {
@@ -65,10 +67,17 @@ export default {
       selected: "",
       selectedEvent: null,
       selectedWeapon: null,
-      eventsOptions: ["a", "b", "c"],
-      weaponsOptions: ["d", "e", "f"],
+      eventTypes: ["a", "b", "c"],
+      weaponTypes: ["d", "e", "f"],
       events: [],
     };
+  },
+    async created() {
+    this.eventTypes = (await api.eventTypes().getEventTypes()).data;
+    this.weaponTypes = (await api.weapons().getWeaponsTypes()).data;
+
+    this.eventTypes = this.eventTypes.map((event) => event.name);
+    this.weaponTypes = this.weaponTypes.map((weapon) => weapon.weaponName);
   },
   methods: {
     onContext(ctx) {

@@ -7,7 +7,7 @@ export default {
     return {
       getEvents: async () => await axios.get("/events"),
       addEvent: async (event) => {
-        await axios.post("/events/add", JSON.stringify(event));
+        await axios.post("/events/add", (event));
       },
       closeEvent: async (id) => {
         await axios.patch(`/events/${id}`);
