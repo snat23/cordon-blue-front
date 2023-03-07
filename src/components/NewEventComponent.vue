@@ -290,7 +290,9 @@ export default {
   width: 100%;
   margin-top: 5px;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .list-group-add-event {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
