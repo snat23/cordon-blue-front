@@ -27,4 +27,9 @@ export default {
       getRegionalBrigade: async () => axios.get("/regionalBrigade"),
     };
   },
+  users() {
+    return {
+      getUsers: async () => axios.get("/users"),
+    };
+  },
 };
