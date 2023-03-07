@@ -97,7 +97,7 @@
       </div>
     </div>
     <div v-if="show === 'lastEvents'" class="col-4 mt-3" id="lastEventsCom">
-      <last-events :lastEvents="events"/>
+      <last-events :lastEvents="lastEventsList"/>
     </div>
     <div v-else-if="show === 'addNewEvent'" class="col-3 mt-3">
       <new-event-component />
@@ -124,11 +124,6 @@ export default {
     data() {
         return {
             show: null,
-            events: [{id: 1, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
-            {id: 2, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
-            {id: 3, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
-            {id: 4, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},
-            {id: 5, location: 'akbcj', time: '12:08', extraInfo: "rwf", date: '12/3/2022', type: 'attack'},]
         }
     },
     components: {
