@@ -22,7 +22,7 @@
           ></b-form-timepicker>
         </b-form-group>
 
-        <b-form-group id="input-group-10" label="מיקום" label-for="input-10">
+        <b-form-group v-show="this.selectedLocation.length" id="input-group-10" label="מיקום" label-for="input-10">
           <b-form-input
             id="input-10"
             v-model="this.selectedLocation"
@@ -213,6 +213,7 @@ export default {
   max-height: 700px;
   max-width: 600px;
 }
+
 .but {
   margin: 5px;
 }
