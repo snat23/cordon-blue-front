@@ -96,16 +96,18 @@
         <p>אירועי עבר</p>
       </div>
     </div>
-    <div v-if="show === 'lastEvents'" class="col-4 mt-3" id="lastEventsCom">
+    <!-- <div v-if="show === 'lastEvents'" class="col-4 mt-3" id="lastEventsCom">
       <last-events :lastEvents="lastEventsList"/>
-    </div>
-    <div v-else-if="show === 'addNewEvent'" class="col-3 mt-3">
+    </div> -->
+    <div  v-if="show === 'addNewEvent'" class="col-3 mt-3">
       <new-event-component />
     </div>
     <div v-else-if="show === 'pastEvents'" class="col-3 mt-3">
       <filter-component />
     </div>
-    <div v-else class="col-3 mt-3"></div>
+    <div  v-else class="col-4 mt-3" id="lastEventsCom">
+      <last-events :lastEvents="lastEventsList"/>
+    </div>
     <div class="col-6 mt-3">
       <map-component />
     </div>
