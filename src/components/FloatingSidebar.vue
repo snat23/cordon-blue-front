@@ -6,8 +6,8 @@
           @click="openComponent('lastEvents')"
           fill="#000000"
           type="button"
-          width="100px"
-          height="100px"
+          width="80px"
+          height="80px"
           viewBox="0 0 846.66 846.66"
           style="
             shape-rendering: geometricPrecision;
@@ -36,8 +36,8 @@
         <svg
           @click="openComponent('addNewEvent')"
           type="button"
-          width="100px"
-          height="100px"
+          width="80px"
+          height="80px"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -54,8 +54,8 @@
         <svg
           @click="openComponent('pastEvents')"
           type="button"
-          width="100px"
-          height="100px"
+          width="80px"
+          height="80px"
           viewBox="0 0 1024 1024"
           fill="#000000"
           class="icon"
@@ -148,13 +148,13 @@ export default {
 .side-button {
   font-size: 80px;
 }
-
 #lastEventsCom {
     width: 450px;
     margin-left: -100px;
 }
 #sideBar {
     margin-left: -50px;
+    margin-top: 50px;
 }
 </style>
 

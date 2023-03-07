@@ -1,7 +1,7 @@
 <template>
   <bdi>
     <b-navbar toggleable="lg"  type="dark" >
-      <img src="../assets/user-icon.png" class="user-icon mr-2" 
+      <img src="../assets/user-image.png" class="user-icon mr-2" 
       />
       
       <a href="https://www.youtube.com/watch?v=COfkdOu9KiI">
@@ -53,7 +53,7 @@ button:hover{
 }
 
 .user-icon {
-  height: 4.4vw;
+  height: 3.4vw;
   position: absolute;
   right: 0;
   display: block;
@@ -63,7 +63,8 @@ button:hover{
   left: 50%;
   margin-left: -50px !important;
   display: block;
-  font-family: 'Heebo';
+  font-family: Georgia;
+  color: white;
   font-size: 25px;
 }
 </style>

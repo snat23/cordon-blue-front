@@ -298,7 +298,7 @@ export default {
   max-height: 700px;
   max-width: 600px;
   height: 700px;
-  background-color: white;
+  background-color: transparent;
 }
 
 .but {
