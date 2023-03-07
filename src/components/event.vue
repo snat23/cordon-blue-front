@@ -53,6 +53,7 @@ export default {
   margin: 2vh;
   max-width: 70vh;
   max-height: 30vh;
+  background-color: aliceblue;
 }
 .row {
   justify-content: space-around;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="list-group">
+    <ul class="list-group-add-event">
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group
           id="input-group-1"
@@ -14,15 +14,12 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-5" label="שעה" label-for="input-5">
-          <b-form-timepicker
-            id="input-5"
-            v-model="form.time"
-            required
-          ></b-form-timepicker>
-        </b-form-group>
-
-        <b-form-group id="input-group-10" label="מיקום" label-for="input-10">
+        <b-form-group
+          v-show="this.selectedLocation.length"
+          id="input-group-10"
+          label="מיקום"
+          label-for="input-10"
+        >
           <b-form-input
             id="input-10"
             v-model="this.selectedLocation"
@@ -129,12 +126,69 @@
             </b-row>
           </b-container>
         </section>
+
         <b-button
-          type="submit"
+          v-show="!this.showAddDesc"
           variant="primary"
+          @click="showAddDescription"
           class="but"
-          >פרסם</b-button
-        >
+          >הוספת תיאור לאירוע
+        </b-button>
+
+        <section v-show="this.showAddDesc">
+          <b-form-group
+            id="input-group-11"
+            label="תיאור לאירוע"
+            label-for="input-11"
+          >
+            <b-form-textarea
+              id="input-11"
+              v-model="form.description"
+              required
+            ></b-form-textarea>
+          </b-form-group>
+        </section>
+
+        <section>
+          <b-button
+            v-show="!this.showAddTerrorists"
+            variant="primary"
+            @click="showAddTerror"
+            class="but"
+            >הוספת מפגעים
+          </b-button>
+
+          <section v-show="this.showAddTerrorists">
+            <b-form-group
+              id="input-group-12"
+              label="כמות מפגעים"
+              label-for="input-12"
+            >
+              <b-form-input
+                id="input-12"
+                type="number"
+                v-model.number="form.terrorists"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-button
+              v-show="this.showAddTerrorists"
+              variant="primary"
+              @click="showAddTerror"
+              class="but"
+              >הוספת מפגע
+            </b-button>
+          </section>
+        </section>
+
+        <section v-if="this.form.terrorists !== 0 && !this.showAddTerrorists">
+          <b-button variant="outline-danger" disabled>
+            כמות מפגעים:
+            {{ this.form.terrorists }}
+          </b-button>
+        </section>
+
+        <b-button type="submit" variant="primary" class="but">פרסם</b-button>
         <b-button type="reset" variant="danger" class="but">אפס</b-button>
       </b-form>
     </ul>
@@ -143,7 +197,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import api from '../../api/api.js';
+import api from "../../api/api.js";
 
 export default {
   data() {
@@ -151,7 +205,7 @@ export default {
       form: {
         id: null,
         eventType: null,
-        time: null,
+        time: Date.now(),
         weapon: null,
         sector: null,
         alertName: null,
@@ -160,7 +214,9 @@ export default {
           [2, 0],
           [3, 0],
         ],
-        coordinates: null
+        coordinates: null,
+        description: null,
+        terrorists: 0,
       },
       eventTypes: [],
       sectors: [],
@@ -168,9 +224,11 @@ export default {
       showAddInjury: false,
       show: true,
       injuredId: 0,
+      showAddDesc: false,
+      showAddTerrorists: false,
     };
   },
-    async created() {
+  async created() {
     this.eventTypes = (await api.eventTypes().getEventTypes()).data;
     this.sectors = (await api.sectors().getRegionalBrigade()).data;
     this.weaponTypes = (await api.weapons().getWeaponsTypes()).data;
@@ -205,6 +263,14 @@ export default {
     showAddInjuries() {
       this.showAddInjury = !this.showAddInjury;
     },
+
+    showAddDescription() {
+      this.showAddDesc = true;
+    },
+
+    showAddTerror() {
+      this.showAddTerrorists = !this.showAddTerrorists;
+    },
   },
   computed: {
     ...mapState(["selectedLocation"]),
@@ -225,12 +291,14 @@ export default {
   margin-top: 5px;
 }
 
-.list-group {
+.list-group-add-event {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
   max-height: 700px;
   max-width: 600px;
+  height: 700px;
+  background-color: white;
 }
 
 .but {
