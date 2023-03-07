@@ -19,7 +19,7 @@
         <img src="../assets/blue-chicken.png" alt="buttonpng" border="0" height="50px"  />
       </button>
       
-      <h1  class="title text-center mt-3">Cordon Bleu</h1>
+      <h1 class="title text-center mt-3">Cordon Bleu</h1>
     </b-navbar>
   </bdi>
 </template>
