@@ -166,9 +166,11 @@ export default {
   },
     async created() {
     this.eventTypes = await (await api.eventTypes().getEventTypes()).data;
+    this.sectors = await (await api.sectors().getRegionalBrigade()).data;
     this.weaponTypes = await (await api.weapons().getWeaponsTypes()).data;
 
     this.eventTypes = this.eventTypes.map((event) => event.name);
+    this.sectors = this.sectors.map((sector) => sector.name);
     this.weaponTypes = this.weaponTypes.map((weapon) => weapon.weaponName);
   },
   methods: {
