@@ -45,27 +45,33 @@
         :options="weaponsOptions"
       ></b-form-select>
     </b-input-group>
-    <b-button type="submit" @onClick="getFilteredArray" variant="primary" class="but"
+    <b-button type="submit" @click="getFilteredArray" variant="primary" class="but"
       >סנן</b-button
     >
   </div>
 </template>
 
 <script>
-import api from "../api.js"
+import api from "../../api/api.js"
 export default {
   data() {
     return {
-      place: "",
-      value: "",
-      formatted: "",
+      place: null,
+      value: null,
+      formatted: null,
       selected: "",
       selectedEvent: null,
       selectedWeapon: null,
-      eventsOptions: ["a", "b", "c"],
-      weaponsOptions: ["d", "e", "f"],
+      eventsOptions: [],
+      weaponsOptions: [],
       events: [],
     };
+  },
+  async created() {
+    this.weaponsOptions = (await api.weapons().getWeaponsTypes()).data;
+    this.weaponsOptions = this.weaponsOptions.map((weapon) => weapon.weaponName);
+    this.eventsOptions = (await api.eventTypes().getEventTypes()).data;
+    this.eventsOptions = this.eventsOptions.map((event) => event.name);
   },
   methods: {
     onContext(ctx) {
@@ -73,13 +79,11 @@ export default {
       this.selected = ctx.selectedYMD;
     },
     async getFilteredArray() {
-      alert("hfjdhf");
-      const conditions = {time: this.value, coordinates: this.place, eventType: this.selectedEvent, weapon: this.selectedWeapon, sector: this.selectedSector};
-      this.events = await api.getFilteredArray(conditions).data;
-
-      alert(JSON.stringify(this.events));
-
-
+    
+      const conditions = {time: this.value, coordinates: this.place, eventType: this.selectedEvent, weapon: this.selectedWeapon};
+      //alert(typeof JSON.parse(conditions));
+      this.events = await api.events().getFilterEvents(JSON.stringify(conditions)).data;
+      alert(this.events);
       return this.events;
     },
   },
