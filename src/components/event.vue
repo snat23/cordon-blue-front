@@ -39,7 +39,6 @@ export default {
     };
   },
   async created() {
-    console.log(this.event.eventType);
     const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
       .data;
     this.nameById = data.name;
