@@ -25,7 +25,6 @@ export default {
   },
   async created() {   
     this.events = await (await api.events().getEvents()).data;  
-    console.log(this.events);
   },
 };
 </script>
