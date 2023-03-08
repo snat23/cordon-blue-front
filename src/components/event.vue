@@ -26,14 +26,14 @@
     <div class="text-left">
       <i
         id="extraInfoButton"
-        v-bind:href="'#event' + event.id"
+        v-bind:href="'#event' + event._id"
         class="fa fa-chevron-down"
         data-toggle="collapse"
       >
       </i>
     </div>
 
-    <div v-bind:id="'event' + event.id" class="collapse">
+    <div v-bind:id="'event' + event._id" class="collapse">
       <h5>:מידע נוסף</h5>
       <b-container>
         <b-row>
@@ -73,12 +73,12 @@
       </b-container>
     </div>
     <div v-if="event.isOpen">
-      <b-button
-        id="closeEvent"
-        @click="closeEvent(event._id)"
-        variant="secondary"
-        >סגור אירוע</b-button
-      >
+      <b-button 
+      v-bind:id="'closeEvent' + event._id" 
+      class="closeButton" 
+      @click="closeEvent(event._id)" 
+      variant="secondary">סגור אירוע</b-button>
+
     </div>
   </div>
 </template>
@@ -102,20 +102,22 @@ export default {
     const data = (await api.eventTypes().getEventTypeById(this.event.eventType))
       .data;
     console.log("data" + data);
+
     this.eventTypeById = data.name;
   },
 
-  computed: {},
+  computed: {
+    
+  },
   methods: {
     ...mapActions(["changeSelectedLocation"]),
     async closeEvent(id) {
-      console.log(this.event.isOpen);
       await api.events().closeEvent(id);
-      console.log(this.event.isOpen);
-      console.log(`eventComponent${id}`);
+      console.log(this.event.coordinates[0] + " " + this.event.coordinates[0]);
+      // await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[0])
       document.getElementById(`eventComponent${id}`).style.border =
         "2px solid #000000";
-      document.getElementById(`eventComponent${id}`).style.display = "none";
+      document.getElementById(`closeEvent${id}`).style.display = "none";
     },
   },
 };
@@ -131,12 +133,14 @@ export default {
 }
 .row {
   justify-content: space-around;
-  margin-top: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 #extraInfoButton {
   margin: 2vh;
 }
-#closeEvent {
+.closeButton {
   margin-bottom: 1vh;
 }
+
 </style>
