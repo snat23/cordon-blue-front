@@ -197,10 +197,10 @@
           <b-button
             type="submit"
             variant="success"
-            class="submit end-form-button"
+            class="submit end-form-button mt-3"
             >פרסם</b-button
           >
-          <b-button type="reset" variant="danger" class="reset end-form-button"
+          <b-button type="reset" variant="danger" class="reset end-form-button mt-3"
             >אפס</b-button
           >
         </b-form>
