@@ -40,16 +40,11 @@
         </b-row>
         <b-row>
           <b-col>
-            <p dir="rtl">סוג אירוע: {{ nameById }}</p>
+            <p>מיקום: {{ event.coordinates }}</p>
           </b-col>
         </b-row>
         <b-row>
-          <b-col>
-            <p>מיקום:{{ event.coordinates }}</p>
-          </b-col>
-        </b-row>
-        <b-row>
-          <section v-if="!noInjuries">
+          <section v-if="injuries">
             <b-container class="injured-info-container">
               <b-row class="justify-content-md-center">
                 <b-button variant="outline-dark" disabled>
@@ -89,11 +84,13 @@ export default {
   data() {
     return {
       eventTypeById: "",
+      injuries: true
     };
   },
   async created() {
-    const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
+    const data = (await api.eventTypes().getEventTypeById(this.event.eventType))
       .data;
+      console.log("data" + data);
     this.eventTypeById = data.name;
   },
 
