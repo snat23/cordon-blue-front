@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gil-mery
+  name: front
   labels:
     app: testapp
 spec:
