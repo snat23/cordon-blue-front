@@ -35,7 +35,7 @@ export default {
   },
   users() {
     return {
-      getUsers: async () => axios.get("/users"),
+      getUser: async (username, password) => await axios.get(`/users/${username}/${password}`),
     };
   },
 };
