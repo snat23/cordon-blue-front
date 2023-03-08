@@ -1,19 +1,19 @@
 <template>
-    <div>
-    <h5 class="display-3 mb-2">ברוכים הבאים למערכת תרנגול כחול  </h5>
+    <div >
+    <h5 id="title" class="display-3 m-0 p-4">ברוכים הבאים למערכת תרנגול כחול  </h5>
     <body id="login">
         <div dir="rtl" class="container home d-flex justify-content-center align-items-center">
             <form id="form" class="row">
-                <h1 class="text-center my-30">כניסה</h1>
-                <div class="input-group  my-3">
-                    <i class=" input-group-text"></i>
-                    <input v-model="username" type="text" id="accountNum" class="form-control" placeholder="מספר חשבון">
+                <h1 class="text-center mt-4">התחברות</h1>
+                <div class="input-group my-3" style="flex-direction: row-reverse;">
+                    <i class=" input-group-text fa fa-user"></i>
+                    <input v-model="username" type="text" id="accountNum" class="form-control rounded" placeholder="שם משתמש ">
                 </div>
-                <div class="input-group  mb-3">
-                    <i class="input-group-text"></i>
-                    <input v-model="password" type="password" id="password" class="form-control" placeholder="סיסמה">
+                <div class="input-group mb-3" style="flex-direction: row-reverse;">
+                  <i class="input-group-text fa fa-key"></i>
+                    <input v-model="password" type="password" id="password" class="form-control rounded" placeholder="סיסמה">
                 </div>
-                <button @click="checkUserValidation()" class="btn btn-primary" id="login" type="button">כניסה</button>
+                <button @click="checkUserValidation()" class="btn" type="button">כניסה</button>
             </form>
         </div>
     </body>
@@ -22,11 +22,11 @@
 
 <script>
 import api from '../../api/api';
+
 export default {
   name: "Login",
   data() {
     return {
-      currUser: [],
       username: "",
       password: ""
     }
@@ -39,11 +39,21 @@ export default {
   },
   methods: {
     async checkUserValidation() {
-      this.currUser =  (await api.users().getUser(this.username, this.hashPassword)).data;
-      if(this.currUser){
+      const currUser =  (await api.users().getUser(this.username, this.hashPassword)).data;
+      if(currUser){
+        this.$swal({
+            text: "בוכים הבאים למערכת הכי טובה בצהל ",
+            icon: "success",
+            confirmButtonText: "סגור",
+        });
         this.$router.push('/home') 
       } else {
-        alert("couldnt connect")
+        this.$swal({
+            title: "שגיאה",
+            text: "נראה כי אינך מורשה להתחבר למערכת",
+            icon: "error",
+            confirmButtonText: "סגור",
+        });
       }
     }
   }
@@ -53,12 +63,30 @@ export default {
 
 <style scoped>
 
+.btn {
+  margin: 5px;
+  color: black;
+  background-color: #a1cfed;
+  border-color: #84bee6;
+}
+
+#title{
+  background-color: #1775b4;
+  color: white
+}
+
 #login {
+  font-family: "Heebo";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2c3e50;
+  height: 900px;
+  background-color: #e0dede;
   background-image: url('../../src/assets/background-cordon.png');
   background-repeat: no-repeat;
-  background-size: 600px;
-  background-position: -200px 450px;
+  background-size: 500px;
+  background-position: -10px 350px;
   background-attachment: fixed;
 }
 </style>

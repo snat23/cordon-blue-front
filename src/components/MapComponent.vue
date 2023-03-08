@@ -1,32 +1,34 @@
 <template>
-  <l-map
-    style="height: 750px"
-    :zoom="zoom"
-    :center="center"
-    @click="getLocation"
-  >
-    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-    <l-marker
-      v-for="(event, index) in noFlightsEvents"
-      :key="index"
-      :lat-lng="event.coordinates"
-      :icon="eventIcon"
-    ></l-marker>
+  <div id="map">
+    <l-map
+      style="height: 750px"
+      :zoom="zoom"
+      :center="center"
+      @click="getLocation"
+    >
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker
+        v-for="(event, index) in noFlightsEvents"
+        :key="index"
+        :lat-lng="event.coordinates"
+        :icon="eventIcon"
+      ></l-marker>
 
-    <l-marker
-      v-for="(event, index) in flights"
-      :key="index"
-      :lat-lng="event.coordinates"
-      :icon="flightIcon"
-    ></l-marker>
+      <l-marker
+        v-for="(event, index) in flights"
+        :key="index"
+        :lat-lng="event.coordinates"
+        :icon="flightIcon"
+      ></l-marker>
 
-    <l-circle
-      v-if="isCurrent"
-      :lat-lng="this.selectedLocation"
-      :radius="circle.radius"
-      :color="circle.color" 
-    />
-  </l-map>
+      <l-circle
+        v-if="isCurrent"
+        :lat-lng="this.selectedLocation"
+        :radius="circle.radius"
+        :color="circle.color" 
+      />
+    </l-map>
+  </div>
 </template>
 
 <script>
@@ -87,7 +89,7 @@ export default {
     getLocation(event) {
       this.circle = {
         center: [event.latlng.lat, event.latlng.lng],
-        radius: 400,
+        radius: 200,
         color: "red",
       };
       this.isCurrent = true;
@@ -105,3 +107,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+</style>
