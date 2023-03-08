@@ -12,6 +12,12 @@ export default {
       closeEvent: async (id) => {
         await axios.patch(`/events/${id}`);
       },
+      sendEventToPolygon: async (latitude, longitude) => {
+        await axios.put(`/addAlert/${latitude}/${longitude}`);
+      },
+      sendCloseEventToPolygon: async (latitude, longitude) => {
+        await axios.put(`/removeAlert/${latitude}/${longitude}`);
+      },
     };
   },
   eventTypes() {
