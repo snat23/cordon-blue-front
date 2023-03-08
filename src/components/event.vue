@@ -12,7 +12,7 @@
     ]"
   >
     <div class="row">
-      <h5>{{ event.alertName }}</h5>
+      <h4 id="eventName" >{{ event.alertName }}</h4>
     </div>
     <div class="row">
       <div class="col">
@@ -38,12 +38,32 @@
       <b-container>
         <b-row>
           <b-col>
-            <p dir="rtl">סוג אירוע: {{ this.eventTypeById }}</p>
+            <p class="detail" dir="rtl">סוג אירוע: {{ this.eventTypeById }}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <p class="detail" dir="rtl">חטמ"ר: {{ this.sectorById }}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <p dir="rtl">אמל"ח: {{ this.weaponById }}</p>
           </b-col>
         </b-row>
         <b-row>
           <b-col>
             <p>מיקום: {{ event.coordinates }}</p>
+          </b-col>
+        </b-row>
+        <b-row v-if="event.description">
+          <b-col>
+            <p>תיאור האירוע: {{ event.description }}</p>
+          </b-col>
+        </b-row>
+        <b-row v-if="event.terrorists">
+          <b-col>
+            <p> כמות מפגעים: {{ event.terrorists}}</p>
           </b-col>
         </b-row>
         <b-row>
@@ -96,14 +116,22 @@ export default {
     return {
       eventTypeById: "",
       injuries: true,
+      weaponById:"",
+      sectorById:""
     };
   },
   async created() {
-    const data = (await api.eventTypes().getEventTypeById(this.event.eventType))
+    const event = (await api.eventTypes().getEventTypeById(this.event.eventType))
       .data;
-    console.log("data" + data);
+    this.eventTypeById = event.name;
 
-    this.eventTypeById = data.name;
+    const weapon = (await api.weapons().getWeaponById(this.event.weapon))
+      .data;
+    this.weaponById = weapon.weaponName;
+
+    const sector = (await api.sectors().getSectorById(this.event.sector))
+      .data;
+    this.sectorById = sector.name;
   },
 
   computed: {
@@ -141,6 +169,12 @@ export default {
 }
 .closeButton {
   margin-bottom: 1vh;
+}
+.detail{
+  margin-bottom: -1vh;
+}
+#eventName{
+  font-weight: bold;
 }
 
 </style>

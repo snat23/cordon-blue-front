@@ -30,12 +30,14 @@ export default {
   weapons() {
     return {
       getWeaponsTypes: async () => axios.get("/weaponTypes"),
+      getWeaponById: async (id) => await axios.get(`/weaponTypes/id/${id}`),
       getWeaponByName: async (weaponName) => await axios.get(`/weaponTypes/name/${weaponName}`),
     };
   },
   sectors() {
     return {
       getRegionalBrigade: async () => axios.get("/regionalBrigade"),
+      getSectorById: async (id) => await axios.get(`/regionalBrigade/id/${id}`),
       getSectorByName: async (sectorName) => await axios.get(`/regionalBrigade/name/${sectorName}`),
     };
   },
