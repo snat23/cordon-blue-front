@@ -1,9 +1,11 @@
 <template>
+  <div>
+    <h5 class="display-3 mb-2">ברוכים הבאים למערכת תרנגול כחול  </h5>
     <body>
-        <div class="container home d-flex justify-content-center align-items-center">
+        <div dir="rtl" class="container home d-flex justify-content-center align-items-center">
             <div id="blue-circle"></div>
             <form id="form" class="row">
-                <h1 class="text-center">כניסה</h1>
+                <h1 class="text-center my-30">כניסה</h1>
                 <div class="input-group  my-3">
                     <i class="bi bi-person-fill input-group-text"></i>
                     <input v-model="username" type="text" id="accountNum" class="form-control" placeholder="מספר חשבון">
@@ -16,6 +18,7 @@
             </form>
         </div>
     </body>
+  </div>
 </template>
 
 <script>
