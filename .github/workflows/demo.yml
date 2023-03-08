@@ -29,7 +29,7 @@ jobs:
                   docker build . -t cordon-blue-front:latest
                   docker login -u 23snat -p asdfghjkasdfghjk 
                   docker image ls
-                  docker push 23snat/blue-cordon-front:latest
-                  sudo mkdir -p /root/.kube/
-                  sudo mv ./kubeconfig /root/.kube/config
-                  sudo kubectl apply -f deployment.yml
+                  docker push 23snat/cordon-blue-front:latest
+                  #sudo mkdir -p /root/.kube/
+                  #sudo mv ./kubeconfig /root/.kube/config
+                  #sudo kubectl apply -f deployment.yml
