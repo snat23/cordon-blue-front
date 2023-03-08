@@ -7,17 +7,24 @@
   >
     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
     <l-marker
-      v-for="(event, index) in events"
+      v-for="(event, index) in noFlightsEvents"
       :key="index"
-      :lat-lng="event"
-      :icon="[event.eventType == 10 ? flightIcon : eventIcon]"
+      :lat-lng="event.coordinates"
+      :icon="eventIcon"
+    ></l-marker>
+
+    <l-marker
+      v-for="(event, index) in flights"
+      :key="index"
+      :lat-lng="event.coordinates"
+      :icon="flightIcon"
     ></l-marker>
 
     <l-circle
       v-if="isCurrent"
       :lat-lng="this.selectedLocation"
       :radius="circle.radius"
-      :color="circle.color"
+      :color="circle.color" 
     />
   </l-map>
 </template>
@@ -59,17 +66,21 @@ export default {
       }),
       flightIcon: L.icon({
         iconUrl: flightIcon,
-        iconSize: [22, 22],
+        iconSize: [18, 18],
         iconAnchor: [16, 37],
       }),
       isCurrent: false,
       circle: {},
-      flightsEvent:[]
+      flightsEvent:[],
     };
   },
   async created () {
     const allEvents = await (await api.events().getEvents()).data;
-    this.events = (allEvents.filter((event) => event.isOpen)).map((event) => event.coordinates);
+    console.log(allEvents)
+    // this.events = (allEvents.filter((event) => event.isOpen)).map((event) => {event.coordinates, event.eventType});
+    // console.log(this.events)
+    this.events = (allEvents.filter((event) => event.isOpen));
+    console.log(this.events)
   },
   methods: {
     ...mapActions(["changeSelectedLocation"]),
@@ -85,6 +96,12 @@ export default {
   },
   computed: {
     ...mapState(["selectedLocation"]),
+    flights(){
+      return this.events.filter((event) => event.eventType == 9);
+    },
+    noFlightsEvents(){
+      return this.events.filter((event) => event.eventType !== 9);
+    }
   },
 };
 </script>
