@@ -188,8 +188,8 @@
           </b-button>
         </section>
 
-        <b-button type="submit" variant="primary" class="but">פרסם</b-button>
-        <b-button type="reset" variant="danger" class="but">אפס</b-button>
+        <b-button type="submit" variant="success" class="submit">פרסם</b-button>
+        <b-button type="reset" variant="danger" class="reset">אפס</b-button>
       </b-form>
     </ul>
   </div>
@@ -311,8 +311,22 @@ export default {
   height: 700px;
   background-color: transparent;
 }
-
 .but {
   margin: 5px;
+  color: black;
+  background-color: #A1CFED;
+  border-color: #84bee6;
+}
+.submit {
+  margin: 5px;
+  color: black;
+  background-color: #a1edc1;
+  border-color: #76dfa1;
+}
+.reset {
+  margin: 5px;
+  color: black;
+  background-color: #f89595;
+  border-color: #f37d7d;
 }
 </style>
