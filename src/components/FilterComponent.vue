@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="example-input">Choose a date</label>
+    <label for="example-input">בחר תאריך</label>
     <b-input-group class="mb-3">
       <b-form-input
         id="example-input"
@@ -72,7 +72,7 @@ export default {
       events: [],
     };
   },
-    async created() {
+  async created() {
     this.eventTypes = (await api.eventTypes().getEventTypes()).data;
     this.weaponTypes = (await api.weapons().getWeaponsTypes()).data;
 
@@ -95,7 +95,7 @@ export default {
 .but {
   margin: 5px;
   color: black;
-  background-color: #A1CFED;
+  background-color: #a1cfed;
   border-color: #84bee6;
 }
 </style>
