@@ -22,7 +22,6 @@ jobs:
             - name: Run Add Test
               working-directory: ./
               run: |
-                  #sudo rm -rf node_modules
                   npm install
                   pwd
                   ls
@@ -30,6 +29,3 @@ jobs:
                   docker login -u 23snat -p asdfghjkasdfghjk 
                   docker image ls
                   docker push 23snat/cordon-blue-front:latest
-                  #sudo mkdir -p /root/.kube/
-                  #sudo mv ./kubeconfig /root/.kube/config
-                  #sudo kubectl apply -f deployment.yml
