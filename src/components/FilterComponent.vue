@@ -94,5 +94,8 @@ export default {
 <style scoped>
 .but {
   margin: 5px;
+  color: black;
+  background-color: #A1CFED;
+  border-color: #84bee6;
 }
 </style>

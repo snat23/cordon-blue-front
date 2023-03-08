@@ -1,7 +1,7 @@
 <template>
   <div
     v-bind:id="'eventComponent' + event._id"
-    class="container"
+    class="container event"
     v-bind:style="[
       event.isOpen
         ? { border: '2px solid #f00c0c' }
@@ -69,7 +69,9 @@
         </b-row>
       </b-container>
     </div>
-    <b-button @click="closeEvent(event._id)" variant="secondary">סגור</b-button>
+    <div v-if="event.isOpen">
+      <b-button id="closeEvent" @click="closeEvent(event._id)" variant="secondary">סגור אירוע</b-button>
+    </div>
   </div>
 </template>
 <script>
@@ -103,13 +105,14 @@ export default {
       console.log(`eventComponent${id}`);
       document.getElementById(`eventComponent${id}`).style.border =
         "2px solid #000000";
+      document.getElementById(`eventComponent${id}`).style.display = "none";
     },
   },
 };
 </script>
 
 <style scoped>
-.container {
+.event {
   border-radius: 25px;
   border: 2px solid #000000;
   margin: 2vh;
@@ -122,5 +125,8 @@ export default {
 }
 #extraInfoButton {
   margin: 2vh;
+}
+#closeEvent {
+  margin-bottom: 1vh;
 }
 </style>
