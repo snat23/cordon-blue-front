@@ -1,7 +1,7 @@
 <template>
   <div>
     <section v-if="this.selectedLocation.length">
-      <ul class="list-group-add-event">
+      <ul class="list-group-add-event p-0">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group
             id="input-group-1"
