@@ -196,7 +196,14 @@
       </ul>
     </section>
     <section v-else>
-      <h1>נא לבחור מיקום מהמפה</h1>
+      <b-card class="no-location-error-card">
+        <b-card-body>
+          <b-card-title>
+            <h2>יש לבחור מיקום מהמפה בשביל להוסיף אירוע</h2>
+          </b-card-title>
+          <b-card-text> </b-card-text>
+        </b-card-body>
+      </b-card>
     </section>
   </div>
 </template>
@@ -341,5 +348,13 @@ export default {
   color: black;
   background-color: #f89595;
   border-color: #f37d7d;
+}
+.no-location-error-card {
+  border-radius: 50px;
+  border-color: #f72525;
+  margin-left: 0%;
+  margin-right: 50px;
+  width: 300px;
+  margin-top: 60px;
 }
 </style>
