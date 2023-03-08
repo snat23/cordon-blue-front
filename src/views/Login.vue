@@ -10,7 +10,7 @@
                 </div>
                 <div class="input-group  mb-3">
                     <i class="bi bi-lock-fill input-group-text"></i>
-                    <input v-model="password" type="text" id="password" class="form-control" placeholder="סיסמה">
+                    <input v-model="password" type="password" id="password" class="form-control" placeholder="סיסמה">
                 </div>
                 <button @click="checkUserValidation()" class="btn btn-primary" id="login" type="button">כניסה</button>
             </form>
@@ -39,7 +39,7 @@ export default {
         if(this.allUsers.find((user) => user.username === this.username &&
         user.password === this.password)){
             alert("good")
-            this.$routes.push('/home') 
+            this.$router.push('/home') 
         } else{
             alert("couldnt connect")
         }
