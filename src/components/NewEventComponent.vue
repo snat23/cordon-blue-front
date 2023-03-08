@@ -302,6 +302,7 @@ export default {
         [2, 0],
         [3, 0],
       ];
+      this.form.terrorists = 0;
     },
     showAddInjuries() {
       this.showAddInjury = !this.showAddInjury;
