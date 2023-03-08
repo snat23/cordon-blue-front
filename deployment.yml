@@ -18,4 +18,4 @@ spec:
       - name: demo
         image: m3r1/testcd:latest
         ports:
-        - containerPort: 8800
+        - containerPort: 8080
