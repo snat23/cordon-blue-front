@@ -30,8 +30,8 @@ export default {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
-  max-height: 700px;
-  max-width: 600px;
+  max-height: 100vh;
+  max-width: 100vw;
 }
 ::-webkit-scrollbar {
   display: none;

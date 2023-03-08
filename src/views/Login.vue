@@ -65,12 +65,13 @@ export default {
   color: white
 }
 
-/* #login {
+#login {
   text-align: center;
   background-image: url('../../src/assets/background-cordon.png');
   background-repeat: no-repeat;
   background-size: 600px;
   background-position: -200px 450px;
   background-attachment: fixed;
-} */
+  max-height: 100vh;
+}
 </style>
