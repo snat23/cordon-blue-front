@@ -22,7 +22,7 @@ jobs:
             - name: Run Add Test
               working-directory: ./
               run: |
-                  npm install
+                  npm install --force
                   pwd
                   ls
                   docker build . -t cordon-blue-front:latest
