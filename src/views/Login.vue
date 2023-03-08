@@ -7,7 +7,7 @@
                 <h1 class="text-center mt-4">התחברות</h1>
                 <div class="input-group my-3" style="flex-direction: row-reverse;">
                     <i class=" input-group-text fa fa-user"></i>
-                    <input v-model="username" type="text" id="accountNum" class="form-control rounded" placeholder="מספר חשבון">
+                    <input v-model="username" type="text" id="accountNum" class="form-control rounded" placeholder="שם משתמש ">
                 </div>
                 <div class="input-group mb-3" style="flex-direction: row-reverse;">
                   <i class="input-group-text fa fa-key"></i>
@@ -22,11 +22,11 @@
 
 <script>
 import api from '../../api/api';
+
 export default {
   name: "Login",
   data() {
     return {
-      currUser: [],
       username: "",
       password: ""
     }
@@ -39,11 +39,21 @@ export default {
   },
   methods: {
     async checkUserValidation() {
-      this.currUser =  (await api.users().getUser(this.username, this.hashPassword)).data;
-      if(this.currUser){
+      const currUser =  (await api.users().getUser(this.username, this.hashPassword)).data;
+      if(currUser){
+        this.$swal({
+            text: "בוכים הבאים למערכת הכי טובה בצהל ",
+            icon: "success",
+            confirmButtonText: "סגור",
+        });
         this.$router.push('/home') 
       } else {
-        alert("couldnt connect")
+        this.$swal({
+            title: "שגיאה",
+            text: "נראה כי אינך מורשה להתחבר למערכת",
+            icon: "error",
+            confirmButtonText: "סגור",
+        });
       }
     }
   }

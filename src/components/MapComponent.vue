@@ -89,7 +89,7 @@ export default {
     getLocation(event) {
       this.circle = {
         center: [event.latlng.lat, event.latlng.lng],
-        radius: 400,
+        radius: 200,
         color: "red",
       };
       this.isCurrent = true;
