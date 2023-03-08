@@ -252,7 +252,8 @@ export default {
       this.form.coordinates = this.selectedLocation;
 
       await api.events().addEvent(this.form);
-      alert(JSON.stringify(this.form));
+      //await api.events().sendEventToPolygon(this.form.coordinates[0], this.form.coordinates[1]);
+
       this.onReset(event);
     },
     onReset(event) {
