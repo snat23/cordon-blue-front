@@ -53,6 +53,16 @@
             <p>מיקום: {{ event.coordinates }}</p>
           </b-col>
         </b-row>
+        <b-row v-if="event.description">
+          <b-col>
+            <p>תיאור האירוע: {{ event.description }}</p>
+          </b-col>
+        </b-row>
+        <b-row v-if="event.terrorists">
+          <b-col>
+            <p> כמות מפגעים: {{ event.terrorists}}</p>
+          </b-col>
+        </b-row>
         <b-row>
           <section v-if="injuries">
             <b-container class="injured-info-container">

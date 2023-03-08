@@ -203,7 +203,6 @@ export default {
   data() {
     return {
       form: {
-        id: null,
         alertName: null,
         time: Date.now(),
         weapon: null,
@@ -251,6 +250,7 @@ export default {
       this.form.weapon = this.form.weapon.weaponId;
       this.form.coordinates = this.selectedLocation;
 
+      alert(JSON.stringify(this.form));
       await api.events().addEvent(this.form);
       //await api.events().sendEventToPolygon(this.form.coordinates[0], this.form.coordinates[1]);
 
