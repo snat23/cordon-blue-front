@@ -40,7 +40,7 @@
         </b-row>
         <b-row>
           <b-col>
-            <p>מיקום:{{ event.coordinates }}</p>
+            <p>מיקום: {{ event.coordinates }}</p>
           </b-col>
         </b-row>
         <b-row>
@@ -88,7 +88,7 @@ export default {
     };
   },
   async created() {
-    const data = (await api.eventTypes().getEventTypeId(this.event.eventType))
+    const data = (await api.eventTypes().getEventTypeById(this.event.eventType))
       .data;
       console.log("data" + data);
     this.eventTypeById = data.name;
