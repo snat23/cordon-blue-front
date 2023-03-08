@@ -17,6 +17,17 @@
           </b-form-group>
           <section class="always-shown">
             <b-form-group
+              id="input-group-1"
+              label="כותרת אירוע"
+              label-for="input-1"
+            >
+              <b-form-input
+                id="input-1"
+                v-model="form.alertName"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
               id="input-group-10"
               label="מיקום"
               label-for="input-10"
@@ -39,7 +50,7 @@
 
             <b-form-group
               id="input-group-11"
-              label="תיאור לאירוע"
+              label="תיאור האירוע"
               label-for="input-11"
             >
               <b-form-textarea
@@ -49,18 +60,6 @@
             </b-form-group>
           </section>
           <section v-if="!isDroneEvent" class="regular-event">
-            <b-form-group
-              id="input-group-1"
-              label="כותרת אירוע"
-              label-for="input-1"
-            >
-              <b-form-input
-                id="input-1"
-                v-model="form.alertName"
-                required
-              ></b-form-input>
-            </b-form-group>
-
             <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
               <b-form-select
                 id="input-4"
@@ -71,7 +70,7 @@
 
               <b-button
                 v-show="!this.showAddInjury"
-                variant="primary"
+                variant="outline-primary"
                 @click="showAddInjuries"
                 class="but add"
                 >הוספת פצועים</b-button
@@ -115,21 +114,24 @@
                   required
                 ></b-form-input>
               </b-form-group>
-              <b-button variant="primary" @click="showAddInjuries" class="but"
-                >הוספת פצוע</b-button
+              <b-button
+                variant="success"
+                @click="showAddInjuries"
+                class="but save-btn"
+                >שמור שינויים</b-button
               >
             </section>
 
             <section v-if="!noInjuries && !this.showAddInjury">
               <b-container class="injured-info-container">
                 <b-row class="justify-content-md-center">
-                  <b-button variant="outline-dark" disabled class="but">
+                  <b-button variant="warning" disabled class="but">
                     פצועים קל:
                     {{ this.form.Injuries[0][1] }}
                   </b-button>
                 </b-row>
                 <b-row class="justify-content-md-center">
-                  <b-button variant="warning" disabled class="but">
+                  <b-button disabled class="but injured-mid">
                     פצועים בינוני:
                     {{ this.form.Injuries[1][1] }}
                   </b-button>
@@ -144,10 +146,10 @@
             </section>
             <section>
               <b-button
-                v-show="!this.showAddTerrorists"
-                variant="primary"
+                v-show="!this.AddTerroristsClicked || this.form.terrorists === 0 && !this.showAddTerrorists"
+                variant="outline-primary"
                 @click="showAddTerror"
-                class="but"
+                class="but add"
                 >הוספת מפגעים
               </b-button>
 
@@ -166,10 +168,10 @@
                 </b-form-group>
                 <b-button
                   v-show="this.showAddTerrorists"
-                  variant="primary"
+                  variant="success"
                   @click="showAddTerror"
-                  class="but"
-                  >הוספת מפגע
+                  class="but save-btn"
+                  >שמור שינויים
                 </b-button>
               </section>
             </section>
@@ -177,7 +179,7 @@
             <section
               v-if="this.form.terrorists !== 0 && !this.showAddTerrorists"
             >
-              <b-button variant="outline-danger" disabled class="but">
+              <b-button variant="danger" class="but mt-1" @click = "showAddTerror">
                 כמות מפגעים:
                 {{ this.form.terrorists }}
               </b-button>
@@ -185,10 +187,10 @@
           </section>
           <section v-if="isDroneEvent">
             <b-form-group id="input-group-11" label="גובה" label-for="input-11">
-              <b-form-textarea
+              <b-form-input
                 id="input-11"
                 v-model="form.droneHeight"
-              ></b-form-textarea>
+              ></b-form-input>
             </b-form-group>
           </section>
 
@@ -250,6 +252,7 @@ export default {
       injuredId: 0,
       showAddDesc: false,
       showAddTerrorists: false,
+      AddTerroristsClicked: false,
     };
   },
   async created() {
@@ -309,6 +312,7 @@ export default {
     },
 
     showAddTerror() {
+      this.AddTerroristsClicked = true;
       this.showAddTerrorists = !this.showAddTerrorists;
     },
   },
@@ -350,13 +354,17 @@ export default {
 }
 .but {
   margin-bottom: 1vh;
-  color: black;
-  background-color: #a1cfed;
   width: 150px;
 }
 
+.save-btn {
+  background-color: #00af49;
+}
+
 .add {
-  margin-top: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 0;
+  border-width: 2px;
 }
 .submit {
   margin: 5px;
@@ -377,5 +385,11 @@ export default {
   margin-right: 50px;
   width: 300px;
   margin-top: 60px;
+}
+
+.injured-mid{
+  background-color: rgb(255, 115, 0) !important;
+  border-color: rgb(255, 115, 0) !important;
+
 }
 </style>
