@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="example-input">בחר תאריך</label>
+    <label for="example-input">Choose a date</label>
     <b-input-group class="mb-3">
       <b-form-input
         id="example-input"
@@ -25,7 +25,7 @@
     <b-input-group>
       <b-form-select
         v-model="selectedEvent"
-        :options="eventTypes"
+        :options="eventsOptions"
       ></b-form-select>
     </b-input-group>
 
@@ -42,22 +42,16 @@
     <b-input-group>
       <b-form-select
         v-model="selectedWeapon"
-        :options="weaponTypes"
+        :options="weaponsOptions"
       ></b-form-select>
     </b-input-group>
-    <b-button
-      type="submit"
-      @click="getFilteredArray"
-      variant="primary"
-      class="but"
+    <b-button type="submit" @onClick="getFilteredArray" variant="primary"
       >סנן</b-button
     >
   </div>
 </template>
 
 <script>
-import api from "../../api/api.js";
-
 export default {
   data() {
     return {
@@ -67,17 +61,10 @@ export default {
       selected: "",
       selectedEvent: null,
       selectedWeapon: null,
-      eventTypes: ["a", "b", "c"],
-      weaponTypes: ["d", "e", "f"],
+      eventsOptions: ["a", "b", "c"],
+      weaponsOptions: ["d", "e", "f"],
       events: [],
     };
-  },
-  async created() {
-    this.eventTypes = (await api.eventTypes().getEventTypes()).data;
-    this.weaponTypes = (await api.weapons().getWeaponsTypes()).data;
-
-    this.eventTypes = this.eventTypes.map((event) => event.name);
-    this.weaponTypes = this.weaponTypes.map((weapon) => weapon.weaponName);
   },
   methods: {
     onContext(ctx) {
@@ -90,12 +77,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.but {
-  margin: 5px;
-  color: black;
-  background-color: #a1cfed;
-  border-color: #84bee6;
-}
-</style>
