@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
     <h5 id="title" class="display-3 m-0 p-4">ברוכים הבאים למערכת תרנגול כחול  </h5>
     <body id="login">
         <div dir="rtl" class="container home d-flex justify-content-center align-items-center">
@@ -13,7 +13,7 @@
                   <i class="input-group-text fa fa-key"></i>
                     <input v-model="password" type="password" id="password" class="form-control rounded" placeholder="סיסמה">
                 </div>
-                <button @click="checkUserValidation()" class="btn" id="login" type="button">כניסה</button>
+                <button @click="checkUserValidation()" class="btn" type="button">כניסה</button>
             </form>
         </div>
     </body>
@@ -76,12 +76,17 @@ export default {
 }
 
 #login {
+  font-family: "Heebo";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2c3e50;
+  height: 900px;
+  background-color: #e0dede;
   background-image: url('../../src/assets/background-cordon.png');
   background-repeat: no-repeat;
-  background-size: 600px;
-  background-position: -200px 450px;
+  background-size: 500px;
+  background-position: -10px 350px;
   background-attachment: fixed;
-  max-height: 100vh;
 }
 </style>
