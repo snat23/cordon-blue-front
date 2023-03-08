@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-start">
-    <div id="sideBar" class="col-3">
+    <div id="sideBar" class="col-2 ml-2 mr-4 p-0">
       <div class="btn-center mt-4">
         <svg
           @click="openLastEvents('lastEvents')"
@@ -99,13 +99,13 @@
     <div v-if="show === 'addNewEvent'" class="col-3 mt-3">
       <new-event-component />
     </div>
-    <div v-else-if="show === 'pastEvents'" class="col-3 mt-4">
-      <filter-component  :filterEventsList="lastEventsList" />
+    <div v-else-if="show === 'pastEvents'" class="col-3 mt-3">
+      <filter-component />
     </div>
     <div v-else class="col-4 mt-3" id="lastEventsCom">
-      <last-events :lastEvents="lastEventsList" />
+      <last-events :lastEvents="lastEventsList"/>
     </div>
-    <div class="col-6 mt-3">
+    <div class="col-6 mt-3 ml-4">
       <map-component />
     </div>
   </div>
@@ -113,36 +113,36 @@
 
 <script>
 import NewEventComponent from "./NewEventComponent.vue";
-import FilterComponent from "./FilterComponent.vue";
+import FilterComponent from "./FilterComponent.vue"
 import MapComponent from "./MapComponent.vue";
-import LastEvents from "./LastEvents.vue";
+import LastEvents from './LastEvents.vue';
 import api from "../../api/api.js";
 
 export default {
-  data() {
-    return {
-      show: null,
-    };
-  },
-  components: {
-    NewEventComponent,
-    LastEvents,
-    FilterComponent,
-    MapComponent,
-  },
-  props: {
-    lastEventsList: Array,
-  },
-  methods: {
-    openComponent(componentName) {
-      this.show = componentName;
+    data() {
+        return {
+            show: null,
+        }
     },
-    async openLastEvents(componentName) {
-      this.lastEventsList = await (await api.events().getEvents()).data;
-      this.show = componentName;
+    components: {
+        NewEventComponent,
+        LastEvents,
+        FilterComponent,
+        MapComponent,
     },
-  },
-};
+    props: {
+        lastEventsList : Array
+    },
+    methods: {
+        openComponent(componentName) {
+            this.show = componentName;
+        },
+         async openLastEvents(componentName){
+          this.lastEventsList =  await (await api.events().getEvents()).data; 
+          this.show = componentName;
+        }
+    },
+}
 </script>
 
 <style scoped>
@@ -150,11 +150,12 @@ export default {
   font-size: 80px;
 }
 #lastEventsCom {
-  width: 450px;
-  margin-left: -100px;
+    width: 450px;
+    margin-left: -100px;
 }
 #sideBar {
-  margin-left: -50px;
-  margin-top: 50px;
+    margin-left: -50px;
+    margin-top: 50px;
 }
 </style>
+
