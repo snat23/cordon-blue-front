@@ -1,17 +1,23 @@
-
 <template>
   <div id="app">
-    <router-view></router-view>
+    <filter-component />
+   <!-- <Navbar />
+   <NewEventComponent /> -->
   </div>
 </template>
 
 <script>
-
+import FilterComponent from "./components/FilterComponent.vue";
+import NewEventComponent from './components/NewEventComponent.vue';
+import Navbar from './components/Navbar.vue';
 
 export default {
   name: "App",
-  
-  
+  components: {
+    FilterComponent,
+    NewEventComponent,
+    Navbar,
+  },
 };
 </script>
 
@@ -24,11 +30,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #e0dede;
-  background-image: url('../src/assets/background-cordon.png');
-  background-repeat: no-repeat;
-  background-size: 500px;
-  background-position: -10px 350px;
-  background-attachment: fixed;
 }
 </style>
