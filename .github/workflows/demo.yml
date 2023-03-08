@@ -26,7 +26,7 @@ jobs:
                   npm install
                   pwd
                   ls
-                  docker build . -t m3r1/testcd:latest
+                  docker build . -t cordon-blue-front:latest
                   docker login -u m3r1 -p Gm8320961 
                   docker image ls
                   docker push m3r1/testcd:latest
