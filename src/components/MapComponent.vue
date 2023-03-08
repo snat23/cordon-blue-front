@@ -10,7 +10,7 @@
       v-for="(event, index) in events"
       :key="index"
       :lat-lng="event"
-      :icon="eventIcon"
+      :icon="[event.eventType == 10 ? flightIcon : eventIcon]"
     ></l-marker>
 
     <l-circle
@@ -28,6 +28,8 @@ import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LCircle } from "vue2-leaflet";
 import dangerIcon from "../assets/danger.png";
 import currentIcon from "../assets/asterisk.png";
+import flightIcon from "../assets/flight.png";
+import api from '../../api/api.js'
 
 export default {
   name: "main-map",
@@ -44,11 +46,7 @@ export default {
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 10,
       center: latLng(32.0619, 35.1124),
-      events: [
-        [32.0619, 35.1124],
-        [32.1203, 35.1402],
-        [32.1223, 35.1202],
-      ],
+      events: [],
       eventIcon: L.icon({
         iconUrl: dangerIcon,
         iconSize: [22, 22],
@@ -59,9 +57,19 @@ export default {
         iconSize: [22, 22],
         iconAnchor: [16, 37],
       }),
+      flightIcon: L.icon({
+        iconUrl: flightIcon,
+        iconSize: [22, 22],
+        iconAnchor: [16, 37],
+      }),
       isCurrent: false,
       circle: {},
+      flightsEvent:[]
     };
+  },
+  async created () {
+    const allEvents = await (await api.events().getEvents()).data;
+    this.events = (allEvents.filter((event) => event.isOpen)).map((event) => event.coordinates);
   },
   methods: {
     ...mapActions(["changeSelectedLocation"]),

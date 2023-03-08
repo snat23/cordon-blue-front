@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="s">
     <h5 class="display-3 mb-2">ברוכים הבאים למערכת תרנגול כחול  </h5>
     <body>
         <div dir="rtl" class="container home d-flex justify-content-center align-items-center">
@@ -50,3 +50,18 @@ export default {
   }
 };
 </script>
+<style scoped>
+#s {
+  font-family: "Heebo";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: #e0dede;
+  background-image: url('../assets/background-cordon.png');
+  background-repeat: no-repeat;
+  background-size: 500px;
+  background-position: -10px 350px;
+  background-attachment: fixed;
+}
+</style>
