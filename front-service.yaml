@@ -6,7 +6,7 @@ spec:
   selector:
     app: testapp-service
   ports:
-    - name: front-service-api
+    - name: front-service-port
       targetPort: 8080
       port: 8080
       protocol: TCP
