@@ -3,7 +3,7 @@
     <div id="sideBar" class="col-3">
       <div class="btn-center mt-4">
         <svg
-          @click="openComponent('lastEvents')"
+          @click="openLastEvents('lastEvents')"
           fill="#000000"
           type="button"
           width="80px"
@@ -118,6 +118,7 @@ import NewEventComponent from "./NewEventComponent.vue";
 import FilterComponent from "./FilterComponent.vue"
 import MapComponent from "./MapComponent.vue";
 import LastEvents from './LastEvents.vue';
+import api from "../../api/api.js";
 
 export default {
     data() {
@@ -139,6 +140,10 @@ export default {
     methods: {
         openComponent(componentName) {
             this.show = componentName;
+        },
+         async openLastEvents(componentName){
+          this.lastEventsList =  await (await api.events().getEvents()).data; 
+          this.show = componentName;
         }
     },
 }
