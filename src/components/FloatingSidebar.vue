@@ -100,7 +100,7 @@
       <new-event-component />
     </div>
     <div v-else-if="show === 'pastEvents'" class="col-3 mt-4">
-      <filter-component />
+      <filter-component  :filterEventsList="lastEventsList" />
     </div>
     <div v-else class="col-4 mt-3" id="lastEventsCom">
       <last-events :lastEvents="lastEventsList" />
