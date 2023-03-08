@@ -204,17 +204,18 @@ export default {
     return {
       form: {
         id: null,
-        eventType: null,
+        alertName: null,
         time: Date.now(),
         weapon: null,
+        eventType: null,
+        coordinates: null,
         sector: null,
-        alertName: null,
         Injuries: [
           [1, 0],
           [2, 0],
           [3, 0],
         ],
-        coordinates: null,
+        isOpen: true,
         description: null,
         terrorists: 0,
       },
@@ -241,10 +242,18 @@ export default {
     ...mapActions(["clearSelectedLocation"]),
     async onSubmit(event) {
       event.preventDefault();
+      
+      this.form.eventType = (await api.eventTypes().getEventTypeByName(this.form.eventType)).data;
+      this.form.eventType = this.form.eventType.eventId;
+      this.form.sector = (await api.sectors().getSectorByName(this.form.sector)).data;
+      this.form.sector = this.form.sector.id;
+      this.form.weapon = (await api.weapons().getWeaponByName(this.form.weapon)).data;
+      this.form.weapon = this.form.weapon.weaponId;
       this.form.coordinates = this.selectedLocation;
+
       await api.events().addEvent(this.form);
       alert(JSON.stringify(this.form));
-      this.clearSelectedLocation;
+      this.onReset(event);
     },
     onReset(event) {
       event.preventDefault();
