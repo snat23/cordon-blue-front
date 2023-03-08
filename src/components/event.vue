@@ -1,5 +1,8 @@
 <template>
   <div
+    @click="
+      changeSelectedLocation([event.coordinates[0], event.coordinates[1]])
+    "
     v-bind:id="'eventComponent' + event._id"
     class="container event"
     v-bind:style="[
@@ -90,13 +93,19 @@
       </b-container>
     </div>
     <div v-if="event.isOpen">
-      <b-button v-bind:id="'closeEvent' + event._id" class="closeButton" @click="closeEvent(event._id)" variant="secondary">סגור אירוע</b-button>
+      <b-button 
+      v-bind:id="'closeEvent' + event._id" 
+      class="closeButton" 
+      @click="closeEvent(event._id)" 
+      variant="secondary">סגור אירוע</b-button>
+
     </div>
   </div>
 </template>
 <script>
 import collapse from "bootstrap/js/src/collapse";
 import api from "../../api/api.js";
+import { mapActions } from "vuex";
 
 export default {
   name: "event",
@@ -129,6 +138,7 @@ export default {
     
   },
   methods: {
+    ...mapActions(["changeSelectedLocation"]),
     async closeEvent(id) {
       await api.events().closeEvent(id);
       console.log(this.event.coordinates[0] + " " + this.event.coordinates[0]);
