@@ -45,6 +45,17 @@
             ></b-form-select>
           </b-form-group>
 
+          <b-form-group
+            id="input-group-11"
+            label="תיאור לאירוע"
+            label-for="input-11"
+          >
+            <b-form-textarea
+              id="input-11"
+              v-model="form.description"
+            ></b-form-textarea>
+          </b-form-group>
+
           <b-form-group id="input-group-4" label="אמל''ח" label-for="input-4">
             <b-form-select
               id="input-4"
@@ -57,7 +68,7 @@
               v-show="!this.showAddInjury"
               variant="primary"
               @click="showAddInjuries"
-              class="but"
+              class="but add"
               >הוספת פצועים</b-button
             >
           </b-form-group>
@@ -107,48 +118,25 @@
           <section v-if="!noInjuries && !this.showAddInjury">
             <b-container class="injured-info-container">
               <b-row class="justify-content-md-center">
-                <b-button variant="outline-dark" disabled>
+                <b-button variant="outline-dark" disabled class="but">
                   פצועים קל:
                   {{ this.form.Injuries[0][1] }}
                 </b-button>
               </b-row>
               <b-row class="justify-content-md-center">
-                <b-button variant="warning" disabled>
+                <b-button variant="warning" disabled class="but">
                   פצועים בינוני:
                   {{ this.form.Injuries[1][1] }}
                 </b-button>
               </b-row>
               <b-row class="justify-content-md-center">
-                <b-button variant="danger" disabled>
+                <b-button variant="danger" disabled class="but">
                   פצועים קשה:
                   {{ this.form.Injuries[2][1] }}
                 </b-button>
               </b-row>
             </b-container>
           </section>
-
-          <b-button
-            v-show="!this.showAddDesc"
-            variant="primary"
-            @click="showAddDescription"
-            class="but"
-            >הוספת תיאור לאירוע
-          </b-button>
-
-          <section v-show="this.showAddDesc">
-            <b-form-group
-              id="input-group-11"
-              label="תיאור לאירוע"
-              label-for="input-11"
-            >
-              <b-form-textarea
-                id="input-11"
-                v-model="form.description"
-                required
-              ></b-form-textarea>
-            </b-form-group>
-          </section>
-
           <section>
             <b-button
               v-show="!this.showAddTerrorists"
@@ -182,16 +170,21 @@
           </section>
 
           <section v-if="this.form.terrorists !== 0 && !this.showAddTerrorists">
-            <b-button variant="outline-danger" disabled>
+            <b-button variant="outline-danger" disabled class="but">
               כמות מפגעים:
               {{ this.form.terrorists }}
             </b-button>
           </section>
 
-          <b-button type="submit" variant="success" class="submit"
+          <b-button
+            type="submit"
+            variant="success"
+            class="submit end-form-button"
             >פרסם</b-button
           >
-          <b-button type="reset" variant="danger" class="reset">אפס</b-button>
+          <b-button type="reset" variant="danger" class="reset end-form-button"
+            >אפס</b-button
+          >
         </b-form>
       </ul>
     </section>
@@ -322,6 +315,9 @@ export default {
 ::-webkit-scrollbar {
   display: none;
 }
+.end-form-button {
+  width: 70px;
+}
 .list-group-add-event {
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
@@ -332,10 +328,14 @@ export default {
   background-color: transparent;
 }
 .but {
-  margin: 5px;
+  margin-bottom: 1vh;
   color: black;
   background-color: #a1cfed;
-  border-color: #84bee6;
+  width: 150px;
+}
+
+.add {
+  margin-top: 2vh;
 }
 .submit {
   margin: 5px;
