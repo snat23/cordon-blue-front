@@ -33,4 +33,9 @@ export default {
       getSectorByName: async (sectorName) => await axios.get(`/regionalBrigade/name/${sectorName}`),
     };
   },
+  users() {
+    return {
+      getUsers: async () => axios.get("/users"),
+    };
+  },
 };
