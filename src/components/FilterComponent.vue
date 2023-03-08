@@ -53,6 +53,7 @@
 
 <script>
 import api from "../../api/api.js"
+
 export default {
   data() {
     return {
@@ -79,11 +80,9 @@ export default {
       this.selected = ctx.selectedYMD;
     },
     async getFilteredArray() {
-    
-      const conditions = {time: this.value, coordinates: this.place, eventType: this.selectedEvent, weapon: this.selectedWeapon};
-      //alert(typeof JSON.parse(conditions));
+      const conditions = {time: this.value, coordinates: this.place,
+      eventType: this.selectedEvent, weapon: this.selectedWeapon};
       this.events = await api.events().getFilterEvents(JSON.stringify(conditions)).data;
-      alert(this.events);
       return this.events;
     },
   },
@@ -92,6 +91,6 @@ export default {
 
 <style scoped>
 .but {
-  margin: 5px
+  margin: 5px;
 }
 </style>
