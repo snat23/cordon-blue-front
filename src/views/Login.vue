@@ -1,19 +1,19 @@
 <template>
     <div>
-    <h5 class="display-3 mb-2">ברוכים הבאים למערכת תרנגול כחול  </h5>
+    <h5 id="title" class="display-3 m-0 p-4">ברוכים הבאים למערכת תרנגול כחול  </h5>
     <body id="login">
         <div dir="rtl" class="container home d-flex justify-content-center align-items-center">
             <form id="form" class="row">
-                <h1 class="text-center my-30">כניסה</h1>
-                <div class="input-group  my-3">
-                    <i class=" input-group-text"></i>
-                    <input v-model="username" type="text" id="accountNum" class="form-control" placeholder="מספר חשבון">
+                <h1 class="text-center mt-4">התחברות</h1>
+                <div class="input-group my-3" style="flex-direction: row-reverse;">
+                    <i class=" input-group-text fa fa-user"></i>
+                    <input v-model="username" type="text" id="accountNum" class="form-control rounded" placeholder="מספר חשבון">
                 </div>
-                <div class="input-group  mb-3">
-                    <i class="input-group-text"></i>
-                    <input v-model="password" type="password" id="password" class="form-control" placeholder="סיסמה">
+                <div class="input-group mb-3" style="flex-direction: row-reverse;">
+                  <i class="input-group-text fa fa-key"></i>
+                    <input v-model="password" type="password" id="password" class="form-control rounded" placeholder="סיסמה">
                 </div>
-                <button @click="checkUserValidation()" class="btn btn-primary" id="login" type="button">כניסה</button>
+                <button @click="checkUserValidation()" class="btn" id="login" type="button">כניסה</button>
             </form>
         </div>
     </body>
@@ -53,12 +53,24 @@ export default {
 
 <style scoped>
 
-#login {
+.btn {
+  margin: 5px;
+  color: black;
+  background-color: #a1cfed;
+  border-color: #84bee6;
+}
+
+#title{
+  background-color: #1775b4;
+  color: white
+}
+
+/* #login {
   text-align: center;
   background-image: url('../../src/assets/background-cordon.png');
   background-repeat: no-repeat;
   background-size: 600px;
   background-position: -200px 450px;
   background-attachment: fixed;
-}
+} */
 </style>

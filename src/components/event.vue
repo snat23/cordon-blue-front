@@ -11,30 +11,30 @@
         : { border: '2px solid #000000' },
     ]"
   >
-    <div class="row">
+    <div class="row mb-0">
       <h4 id="eventName" >{{ event.alertName }}</h4>
     </div>
     <div class="row">
       <div class="col">
-        <p>{{ new Date(event.time).toLocaleTimeString() }} :שעה</p>
+        <p class="mb-0">{{ new Date(event.time).toLocaleTimeString() }} :שעה</p>
       </div>
       <div class="col">
-        <p>{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
+        <p class="mb-0">{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
       </div>
     </div>
 
     <div class="text-left">
       <i
-        id="extraInfoButton"
+        v-bind:id="'openExtraInfoButton' + event._id"
         v-bind:href="'#event' + event._id"
-        class="fa fa-chevron-down"
+        class="fa fa-chevron-down m-2"
+        @click="removeDropdown(event._id)"
         data-toggle="collapse"
       >
       </i>
     </div>
 
     <div v-bind:id="'event' + event._id" class="collapse">
-      <h5>:מידע נוסף</h5>
       <b-container>
         <b-row>
           <b-col>
@@ -90,6 +90,15 @@
             </b-container>
           </section>
         </b-row>
+         <div class="text-left">
+      <i
+        v-bind:id="'closeExtraInfoButton' + event._id"
+        v-bind:href="'#event' + event._id"
+        class="fa fa-chevron-up m-2"
+        @click="addDropdown(event._id)"
+        data-toggle="collapse">
+      </i>
+    </div>
       </b-container>
     </div>
     <div v-if="event.isOpen">
@@ -141,12 +150,17 @@ export default {
     ...mapActions(["changeSelectedLocation"]),
     async closeEvent(id) {
       await api.events().closeEvent(id);
-      console.log(this.event.coordinates[0] + " " + this.event.coordinates[0]);
       // await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[0])
       document.getElementById(`eventComponent${id}`).style.border =
         "2px solid #000000";
       document.getElementById(`closeEvent${id}`).style.display = "none";
     },
+    removeDropdown(id) {
+      document.getElementById(`openExtraInfoButton${id}`).style.display = "none";
+    },
+    addDropdown(id) {
+      document.getElementById(`openExtraInfoButton${id}`).style.display = "flex";
+    }
   },
 };
 </script>
@@ -165,7 +179,7 @@ export default {
   margin-bottom: 1vh;
 }
 #extraInfoButton {
-  margin: 2vh;
+  margin: 1vh;
 }
 .closeButton {
   margin-bottom: 1vh;

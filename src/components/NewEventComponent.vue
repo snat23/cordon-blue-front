@@ -1,7 +1,7 @@
 <template>
   <div>
     <section v-if="this.selectedLocation.length">
-      <ul class="list-group-add-event">
+      <ul class="list-group-add-event p-0">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
           <b-form-group
             id="input-group-1"
@@ -262,7 +262,6 @@ export default {
       this.form.weapon = this.form.weapon.weaponId;
       this.form.coordinates = this.selectedLocation;
 
-      alert(JSON.stringify(this.form));
       await api.events().addEvent(this.form);
       //await api.events().sendEventToPolygon(this.form.coordinates[0], this.form.coordinates[1]);
 
