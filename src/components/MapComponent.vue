@@ -78,7 +78,7 @@ export default {
   },
   watch: {
     async selectedLocation(){
-      const allEvents = await (await api.events().getEvents()).data;
+    const allEvents = await (await api.events().getEvents()).data;
     console.log(allEvents)
     this.events = (allEvents.filter((event) => event.isOpen));
     console.log(this.events)
