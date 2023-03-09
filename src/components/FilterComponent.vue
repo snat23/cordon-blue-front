@@ -115,7 +115,7 @@ export default {
       this.selected = ctx.selectedYMD;
     },
     async getFilteredArray() {
-      let place = [];
+      let place;
       if(this.placeX!= null && this.placeY!= null){
         place = [this.placeX, this.placeY];
       } else {
@@ -125,18 +125,21 @@ export default {
       this.selectedWeapon !== null ? this.selectedWeapon = (await api.weapons().getWeaponByName(this.selectedWeapon)).data : null;
       this.selectedEvent !== null ? this.selectedEvent = (await api.eventTypes().getEventTypeByName(this.selectedEvent)).data : null;
       let dateSelected = null;   
-      let endOfDaySelected =  new Date();
-      if(this.date!== null) {
+      let endOfDaySelected = null;
+
+      if(this.date !== null) {
         dateSelected = new Date(this.date);
+        endOfDaySelected = new Date(dateSelected);
         endOfDaySelected.setDate(dateSelected.getDate() + 1);
       }
-      const filteredEvents = this.filterEventsList.filter((event) => {
-       const eventDate = new Date(event.time);
-      return (((place === null))||(place.toString() === event.coordinates.toString())  && 
-      (((dateSelected <= eventDate) && (eventDate < endOfDaySelected)) || (this.date === null))&&
-      ((this.selectedWeapon === null) || (this.selectedWeapon.weaponId === event.weapon)) && 
-      ((this.selectedEvent === null) || (this.selectedEvent.eventId === event.eventType)))
-      });
+
+  const filteredEvents = this.filterEventsList.filter((event) => 
+    (this.checkPlace(event, place) && 
+    this.checkDate(event, dateSelected, endOfDaySelected) &&
+    this.checkWeapon(event) &&
+    this.checkType(event))
+ );
+
       this.showFilter=false;
       this.currentFilteredEvents = filteredEvents;
 
@@ -153,6 +156,18 @@ export default {
       this.events = [],
       this.currentFilteredEvents = []
     },
+    checkPlace(event, place) {
+      return place === null || place.toString() === event.coordinates.toString(); 
+    },
+    checkDate(event, dateSelected, endOfDaySelected) {
+      return this.date === null || (dateSelected <= new Date(event.time) && new Date(event.time) < endOfDaySelected); 
+    },
+    checkWeapon(event) {
+      return this.selectedWeapon === null || this.selectedWeapon.weaponId === event.weapon; 
+    },
+    checkType(event) {
+      return this.selectedEvent === null || this.selectedEvent.eventId === event.eventType;
+    }
   },
 };
 </script>
