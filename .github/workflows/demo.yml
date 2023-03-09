@@ -22,8 +22,7 @@ jobs:
             - name: Run Add Test
               working-directory: ./
               run: |
-                  sudo rm -rf node_modules
-                  npm install
+                  npm install --legacy-peer-deps
                   pwd
                   ls
                   docker build . -t cordon-blue-front:latest
@@ -34,6 +33,3 @@ jobs:
                   sudo mkdir -p /root/.kube/
                   sudo mv ./kubeconfig /root/.kube/config
                   sudo kubectl apply -f deployment.yml
-                  
-
-
