@@ -1,5 +1,5 @@
 <template>
-<div>
+<div dir="rtl">
   <div v-if="showFilter">
     <label for="example-input">בחר תאריך</label>
     <b-input-group class="mb-3">
