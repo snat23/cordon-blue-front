@@ -13,11 +13,11 @@ export default {
         await axios.patch(`/events/${id}`);
       },
       sendEventToPolygon: async (latitude, longitude) => {
-        const instance = axios.create({baseURL: "http://karnafBackend:3001"});
+        const instance = axios.create({baseURL: "http://karnafbackend:3001"});
         await instance.put(`/addAlert/${latitude}/${longitude}`);
       },
       sendCloseEventToPolygon: async (latitude, longitude) => {
-        const instance = axios.create({baseURL: "http://karnafBackend:3001"});
+        const instance = axios.create({baseURL: "http://karnafbackend:3001"});
         await instance.put(`/removeAlert/${latitude}/${longitude}`);
       },
     };
