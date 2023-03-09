@@ -11,30 +11,30 @@
         : { border: '2px solid #000000' },
     ]"
   >
-    <div class="row">
-      <h4 id="eventName">{{ event.alertName }}</h4>
+    <div class="row mb-0">
+      <h4 id="eventName" >{{ event.alertName }}</h4>
     </div>
     <div class="row">
       <div class="col">
-        <p>{{ new Date(event.time).toLocaleTimeString() }} :שעה</p>
+        <p class="mb-0">{{ new Date(event.time).toLocaleTimeString() }} :שעה</p>
       </div>
       <div class="col">
-        <p>{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
+        <p class="mb-0">{{ new Date(event.time).toLocaleDateString() }} :תאריך</p>
       </div>
     </div>
 
     <div class="text-left">
       <i
-        id="extraInfoButton"
+        v-bind:id="'openExtraInfoButton' + event._id"
         v-bind:href="'#event' + event._id"
-        class="fa fa-chevron-down"
+        class="fa fa-chevron-down m-2"
+        @click="removeDropdown(event._id)"
         data-toggle="collapse"
       >
       </i>
     </div>
 
     <div v-bind:id="'event' + event._id" class="collapse">
-      <h5>:מידע נוסף</h5>
       <b-container>
         <b-row>
           <b-col>
@@ -63,26 +63,26 @@
         </b-row>
         <b-row v-if="event.terrorists">
           <b-col>
-            <p>כמות מפגעים: {{ event.terrorists }}</p>
+            <p> כמות מפגעים: {{ event.terrorists}}</p>
           </b-col>
         </b-row>
         <b-row>
           <section v-if="injuries">
             <b-container class="injured-info-container">
               <b-row class="justify-content-md-center">
-                <b-button variant="warning" disabled class="but">
+                <b-button variant="outline-dark" disabled>
                   פצועים קל:
                   {{ this.event.Injuries[0][1] }}
                 </b-button>
               </b-row>
-              <b-row class="justify-content-md-center ">
-                <b-button variant="warning" disabled class="but injured-mid">
+              <b-row class="justify-content-md-center">
+                <b-button variant="warning" disabled>
                   פצועים בינוני:
                   {{ this.event.Injuries[1][1] }}
                 </b-button>
               </b-row>
               <b-row class="justify-content-md-center">
-                <b-button variant="danger" disabled class="but">
+                <b-button variant="danger" disabled>
                   פצועים קשה:
                   {{ this.event.Injuries[2][1] }}
                 </b-button>
@@ -90,16 +90,24 @@
             </b-container>
           </section>
         </b-row>
+         <div class="text-left">
+      <i
+        v-bind:id="'closeExtraInfoButton' + event._id"
+        v-bind:href="'#event' + event._id"
+        class="fa fa-chevron-up m-2"
+        @click="addDropdown(event._id)"
+        data-toggle="collapse">
+      </i>
+    </div>
       </b-container>
     </div>
     <div v-if="event.isOpen">
-      <b-button
-        v-bind:id="'closeEvent' + event._id"
-        class="closeButton"
-        @click="closeEvent(event._id)"
-        variant="secondary"
-        >סגור אירוע</b-button
-      >
+      <b-button 
+      v-bind:id="'closeEvent' + event._id" 
+      class="closeButton" 
+      @click="closeEvent(event._id)" 
+      variant="secondary">סגור אירוע</b-button>
+
     </div>
   </div>
 </template>
@@ -117,34 +125,42 @@ export default {
     return {
       eventTypeById: "",
       injuries: true,
-      weaponById: "",
-      sectorById: "",
+      weaponById:"",
+      sectorById:""
     };
   },
   async created() {
-    const event = (
-      await api.eventTypes().getEventTypeById(this.event.eventType)
-    ).data;
+    const event = (await api.eventTypes().getEventTypeById(this.event.eventType))
+      .data;
     this.eventTypeById = event.name;
 
-    const weapon = (await api.weapons().getWeaponById(this.event.weapon)).data;
+    const weapon = (await api.weapons().getWeaponById(this.event.weapon))
+      .data;
     this.weaponById = weapon.weaponName;
 
-    const sector = (await api.sectors().getSectorById(this.event.sector)).data;
+    const sector = (await api.sectors().getSectorById(this.event.sector))
+      .data;
     this.sectorById = sector.name;
   },
 
-  computed: {},
+  computed: {
+    
+  },
   methods: {
     ...mapActions(["changeSelectedLocation"]),
     async closeEvent(id) {
       await api.events().closeEvent(id);
-      console.log(this.event.coordinates[0] + " " + this.event.coordinates[0]);
       // await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[0])
       document.getElementById(`eventComponent${id}`).style.border =
         "2px solid #000000";
       document.getElementById(`closeEvent${id}`).style.display = "none";
     },
+    removeDropdown(id) {
+      document.getElementById(`openExtraInfoButton${id}`).style.display = "none";
+    },
+    addDropdown(id) {
+      document.getElementById(`openExtraInfoButton${id}`).style.display = "flex";
+    }
   },
 };
 </script>
@@ -163,22 +179,16 @@ export default {
   margin-bottom: 1vh;
 }
 #extraInfoButton {
-  margin: 2vh;
+  margin: 1vh;
 }
 .closeButton {
   margin-bottom: 1vh;
 }
-.detail {
+.detail{
   margin-bottom: -1vh;
 }
-#eventName {
+#eventName{
   font-weight: bold;
 }
-.injured-mid {
-  background-color: rgb(255, 115, 0) !important;
-}
-.but {
-  margin-bottom: 1vh;
-  width: 150px;
-}
+
 </style>

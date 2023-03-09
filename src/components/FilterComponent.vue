@@ -71,7 +71,7 @@
       >חזור לסינון</b-button
     >
     <h1>אירועים לאחר סינון </h1></div>
-      <last-events :lastEvents="currentFilteredEvents"  class="col-12 mt-3 text-center" id="lastEventsCom"/>
+      <last-events :lastEvents="currentFilteredEvents"  class="col-12 mt-3 text-center list-group" id="lastEventsCom"/>
   </div>
 </div>
 </template>
@@ -180,7 +180,14 @@ export default {
   border-color: #84bee6;
 }
 #lastEventsCom {
-  width: 450px;
-  margin-left: -100px;
+  width: 350px;
+  margin-left: -50px;
+}
+.list-group {
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 10px;
+  max-height: 100vh;
+  width: 10px;
 }
 </style>
