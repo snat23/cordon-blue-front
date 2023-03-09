@@ -1,5 +1,5 @@
 <template>
-<div dir="rtl">
+<div dir="ltr">
   <div v-if="showFilter">
     <label for="example-input">בחר תאריך</label>
     <b-input-group class="mb-3">
@@ -180,8 +180,8 @@ export default {
   border-color: #84bee6;
 }
 #lastEventsCom {
-  width: 350px;
-  margin-left: -50px;
+  width: 400px;
+  margin-left: -100px;
 }
 .list-group {
   overflow: scroll;
