@@ -42,7 +42,7 @@ export default {
       const currUser =  (await api.users().getUser(this.username, this.hashPassword)).data;
       if(currUser){
         this.$swal({
-            text: "בוכים הבאים למערכת הכי טובה בצהל ",
+            text: "ברוכים הבאים למערכת הכי טובה בצהל ",
             icon: "success",
             confirmButtonText: "סגור",
         });

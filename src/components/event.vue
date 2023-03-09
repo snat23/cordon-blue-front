@@ -150,10 +150,11 @@ export default {
     ...mapActions(["changeSelectedLocation"]),
     async closeEvent(id) {
       await api.events().closeEvent(id);
-      // await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[0])
+      // await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[1])
       document.getElementById(`eventComponent${id}`).style.border =
         "2px solid #000000";
       document.getElementById(`closeEvent${id}`).style.display = "none";
+      await api.events().sendCloseEventToPolygon(this.event.coordinates[0], this.event.coordinates[1])
     },
     removeDropdown(id) {
       document.getElementById(`openExtraInfoButton${id}`).style.display = "none";

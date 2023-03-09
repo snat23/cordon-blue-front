@@ -76,11 +76,17 @@ export default {
       flightsEvent:[],
     };
   },
+  watch: {
+    async selectedLocation(){
+    const allEvents = await (await api.events().getEvents()).data;
+    console.log(allEvents)
+    this.events = (allEvents.filter((event) => event.isOpen));
+    console.log(this.events)
+    }
+  },
   async created () {
     const allEvents = await (await api.events().getEvents()).data;
     console.log(allEvents)
-    // this.events = (allEvents.filter((event) => event.isOpen)).map((event) => {event.coordinates, event.eventType});
-    // console.log(this.events)
     this.events = (allEvents.filter((event) => event.isOpen));
     console.log(this.events)
   },
