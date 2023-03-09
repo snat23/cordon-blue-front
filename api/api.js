@@ -1,6 +1,6 @@
 import axios from "axios";
 import { async } from "regenerator-runtime";
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://cordon-blue-back:9001";
 
 export default {
   events() {
