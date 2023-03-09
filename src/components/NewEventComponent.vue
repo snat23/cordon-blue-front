@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div dir="rtl">
     <section v-if="this.selectedLocation.length">
       <ul class="list-group-add-event p-0">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
