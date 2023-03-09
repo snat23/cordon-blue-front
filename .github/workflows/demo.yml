@@ -27,9 +27,13 @@ jobs:
                   pwd
                   ls
                   docker build . -t cordon-blue-front:latest
-                  docker login -u m3r1 -p Gm8320961 
+                  docker login -u 23snat -p asdfghjkasdfghjk 
                   docker image ls
-                  docker push m3r1/testcd:latest
+                  docker tag cordon-blue-front:latest 23snat/cordon-blue-front:latest
+                  docker push 23snat/cordon-blue-front:latest
                   sudo mkdir -p /root/.kube/
                   sudo mv ./kubeconfig /root/.kube/config
                   sudo kubectl apply -f deployment.yml
+                  
+
+
